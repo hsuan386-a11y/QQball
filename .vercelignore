@@ -1,0 +1,6 @@
+# 讓 Vercel 確保 public 資料夾與所有必要檔案都被打包進部署
+!.*
+!public/**
+!index.html
+!vercel.json
+!README.md
