@@ -34,25 +34,57 @@
       padding-bottom: 3rem;
     }
 
-    /*/* ---------------------- Hero B：標題卡片版 ---------------------- */
+    /* ---------------------- Hero C：左文右圖版 ---------------------- */
 .hero {
-  padding: 2.4rem 0 1.9rem;
-  background: radial-gradient(circle at top, #fff4e6 0%, #fff7ef 40%, #fff5eb 100%);
+  padding: 2.4rem 0 2.2rem;
+  background: #fff7ef;
 }
 
 .hero-inner {
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
+}
+
+/* 手機先上下排，平板以上才左右排 */
+.hero-split {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.hero-copy {
+  text-align: center;
+  color: #4a2c1b;
+  padding: 0 1rem;
+}
+
+.hero-title {
+  font-size: clamp(2.1rem, 3.3vw, 2.7rem);
+  letter-spacing: 0.18em;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.4rem, 2.2vw, 1.7rem);
+  font-weight: 600;
+  color: #c0692f;
+  margin-bottom: 0.35rem;
+}
+
+.hero-tagline {
+  font-size: clamp(1.02rem, 1.7vw, 1.1rem);
+  color: #7b5a3c;
+  line-height: 1.9;
 }
 
 .hero-visual {
   text-align: center;
-  margin: 0 auto 1.5rem;
 }
 
 .hero-img {
   max-width: 100%;
-  max-height: min(68vh, 500px);
+  max-height: min(70vh, 520px);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -60,43 +92,22 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
-/* 卡片式標題區 */
-.hero-text-card {
-  max-width: 720px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 1.1rem 1.6rem 1.3rem;
-  background: rgba(255, 248, 237, 0.95);
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(214, 176, 133, 0.45);
-  color: #4a2c1b;
-}
-
-.hero-title {
-  font-size: clamp(2.1rem, 3.1vw, 2.6rem);
-  letter-spacing: 0.18em;
-  font-weight: 800;
-  margin-bottom: 0.4rem;
-}
-
-.hero-subtitle {
-  font-size: clamp(1.35rem, 2.1vw, 1.65rem);
-  font-weight: 600;
-  color: #c0692f;
-  margin-bottom: 0.2rem;
-}
-
-.hero-tagline {
-  font-size: clamp(1.02rem, 1.7vw, 1.1rem);
-  color: #7b5a3c;
-  margin-top: 0.1rem;
-  line-height: 1.8;
-}
-
+/* 平板以上：左右排，文字左、圖右 */
 @media (min-width: 834px) {
-  .hero {
-    padding: 2.8rem 0 2.2rem;
+  .hero-split {
+    flex-direction: row;
+    align-items: center;
+    gap: 2.4rem;
+  }
+
+  .hero-copy {
+    flex: 1;
+    text-align: left;
+    padding-left: 1.2rem;
+  }
+
+  .hero-visual {
+    flex: 1.1;
   }
 }
     /* ----------------------------------------------
@@ -241,21 +252,22 @@
   <!--                     Hero 封面（V4）                    -->
   <!-- ===================================================== -->
   <section class="hero" aria-label="主視覺">
-  <div class="hero-inner container">
+  <div class="hero-inner container hero-split">
+    <div class="hero-copy">
+      <h1 class="hero-title">ＱＱ球職人手作</h1>
+      <p class="hero-subtitle">甜的剛好，心的溫度。</p>
+      <p class="hero-tagline">
+        夜色裡的攤車，一鍋油、一雙手，<br>
+        一段關於手作溫度的故事。
+      </p>
+    </div>
+
     <div class="hero-visual">
       <img
         src="qqball_final_00_hero_main.png"
         alt="夜色裡的攤車與油鍋，地瓜球在暖光中翻滾的畫面"
         class="hero-img"
       >
-    </div>
-
-    <div class="hero-text-card">
-      <h1 class="hero-title">ＱＱ球職人手作</h1>
-      <p class="hero-subtitle">甜的剛好，心的溫度。</p>
-      <p class="hero-tagline">
-        夜色裡的攤車，一鍋油、一雙手，一段故事。
-      </p>
     </div>
   </div>
 </section>
