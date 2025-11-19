@@ -2,37 +2,183 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<title>ＱＱ球職人手作｜甜的剛好，心的溫度。</title>
-<meta name="description" content="夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。">
-
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="ＱＱ球職人手作">
-<meta property="og:url" content="https://q-qball.vercel.app/">
-<meta property="og:title" content="ＱＱ球職人手作｜甜的剛好，心的溫度。">
-<meta property="og:description" content="夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。">
-<meta property="og:image" content="qqball_final_share_fb.png">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ＱＱ球職人手作｜甜的剛好，心的溫度。">
-<meta name="twitter:description" content="夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。">
-<meta name="twitter:image" content="qqball_final_share_fb.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>QQ球職人手作 ｜ 封面 Demo</title>
 
 <style>
-:root {
-  --ink:#37281c;
-  --ink-soft:#4b3a2b;
-  --bg:#fff8f1;
-  --accent:#c67a42;
-  --max-w:880px;
-  --title-xl:clamp(2.5rem,4vw,3.8rem);
-  --title-l:clamp(2rem,3vw,2.7rem);
-  --title-m:clamp(1.7rem,2.4vw,2.1rem);
-  --text-l:clamp(20px,2.2vw,22px);
-  --text-m:clamp(19px,2vw,20px);
-  --text-s:clamp(17px,1.8vw,19px);
+
+/* ----------------------------
+    HERO 區容器
+----------------------------- */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 520px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+/* 大螢幕：套用橫向封面圖 */
+@media (min-width: 900px) {
+  .hero {
+    background-image: url("qqball_final_00_hero_scene_v2.png");
+  }
+}
+
+/* 小螢幕：套用直向封面圖 */
+@media (max-width: 899px) {
+  .hero {
+    background-image: url("qqball_final_00_hero_main.png");
+  }
+}
+
+/* ----------------------------
+    HERO 文字安全區
+----------------------------- */
+.hero-content {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30vh;         /* 職人下巴以上不放字 */
+  bottom: 38vh;      /* 油鍋上緣以下不放字 */
+  max-width: min(560px, 80vw);
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #f9e1c1;
+}
+
+/* ----------------------------
+    文字樣式（桌機）
+----------------------------- */
+.hero-kicker {
+  font-size: 0.9rem;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  margin-bottom: 0.9rem;
+  color: #f4e1c9;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  letter-spacing: 0.18em;
+  text-indent: 0.18em;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  color: #f9e1c1;
+}
+
+.hero-subtitle-en {
+  font-size: 0.95rem;
+  letter-spacing: 0.35em;
+  text-indent: 0.35em;
+  margin-bottom: 1.1rem;
+  color: #f4e1c9;
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-indent: 0.08em;
+  margin-bottom: 0.9rem;
+  color: #f5b782;
+}
+
+.hero-lead {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+  text-indent: 0.08em;
+  color: #f6eadb;
+}
+
+
+/* ----------------------------
+    iPad 直向（中型螢幕）
+----------------------------- */
+@media (max-width: 1024px) {
+  .hero-content {
+    top: 32vh;
+    bottom: 32vh;
+    max-width: 78vw;
+    padding: 0 1.75rem;
+  }
+  .hero-title { font-size: 2.3rem; }
+  .hero-tagline { font-size: 1.2rem; }
+  .hero-lead { font-size: 1rem; }
+}
+
+/* ----------------------------
+    手機版
+----------------------------- */
+@media (max-width: 640px) {
+  .hero {
+    height: 100vh;
+  }
+  .hero-content {
+    top: 36vh;
+    bottom: 20vh;
+    max-width: 86vw;
+    padding: 0 1.25rem;
+  }
+  .hero-kicker {
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+  .hero-title {
+    font-size: 2.0rem;
+    margin-bottom: 0.6rem;
+  }
+  .hero-subtitle-en {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+  .hero-tagline {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+  .hero-lead {
+    font-size: 0.96rem;
+    line-height: 1.75;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ============================
+        HERO 封面段落
+============================= -->
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="hero-kicker">QQBALL・HANDMADE</div>
+
+    <h1 class="hero-title">ＱＱ球職人手作</h1>
+
+    <div class="hero-subtitle-en">SWEET & HANDMADE</div>
+
+    <div class="hero-tagline">甜的剛剛好，心的溫度。</div>
+
+    <div class="hero-lead">
+      夜色裡的攤車，一鍋油、一雙手，<br>
+      一段關於手作溫度的故事。
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>
 
 body {
   margin:0;
