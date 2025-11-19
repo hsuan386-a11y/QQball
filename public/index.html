@@ -34,80 +34,68 @@
       padding-bottom: 3rem;
     }
 
-    /* ----------------------------------------------
-       Hero 封面（V4）
-    ---------------------------------------------- */
-    .hero {
-      position: relative;
-      width: 100%;
-      text-align: center;
-      margin-bottom: 3rem;
-    }
+    /* ---------------------- Hero A：上圖下字版 ---------------------- */
+.hero {
+  padding: 2.4rem 0 1.6rem;
+  background: #fff7ef;
+}
 
-    .hero img {
-      width: 100%;
-      filter: brightness(0.72);
-    }
+.hero-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
 
-    .hero-title {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #fff8f0;
-      text-shadow: 0 3px 10px rgba(0,0,0,0.45);
-      font-family: "Noto Serif TC", serif;
-      width: 90%;
-    }
+.hero-visual {
+  text-align: center;
+  margin: 0 auto 1.6rem;
+}
 
-    .hero-title h1 {
-      font-size: 2rem;
-      margin-bottom: .4rem;
-    }
+.hero-img {
+  max-width: 100%;
+  max-height: min(70vh, 520px);
+  width: auto;
+  height: auto;
+  object-fit: contain; /* 不裁圖，完整呈現 */
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
 
-    .hero-title h2 {
-      font-size: 1.25rem;
-      margin-bottom: .4rem;
-      font-weight: 500;
-    }
+/* 標題區塊 */
+.hero-text-block {
+  text-align: center;
+  color: #4a2c1b;
+  padding: 0 1rem 0.4rem;
+}
 
-    .hero-title h3 {
-      font-size: 1.05rem;
-      opacity: .95;
-      font-weight: 500;
-    }
+.hero-title {
+  font-size: clamp(2.1rem, 3.2vw, 2.6rem);
+  letter-spacing: 0.2em;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
 
-    @media (min-width: 780px) {
-      .hero-title h1 { font-size: 2.6rem; }
-      .hero-title h2 { font-size: 1.6rem; }
-      .hero-title h3 { font-size: 1.25rem; }
-    }
+.hero-subtitle {
+  font-size: clamp(1.4rem, 2.2vw, 1.7rem);
+  font-weight: 600;
+  color: #c0692f;
+  margin-bottom: 0.4rem;
+}
 
-    /* ----------------------------------------------
-       文字區域（全站）
-    ---------------------------------------------- */
-    section {
-      margin-bottom: 3.4rem;
-    }
+.hero-tagline {
+  font-size: clamp(1.05rem, 1.7vw, 1.15rem);
+  color: #7b5a3c;
+  margin-top: 0.25rem;
+}
 
-    section h3 {
-      font-size: 1.3rem;
-      color: #7a5a44;
-      margin-bottom: .6rem;
-    }
-
-    section p {
-      font-size: 1.07rem;
-      margin: .7rem 0;
-      text-align: justify;
-    }
-
-    @media (min-width: 820px) {
-      section p {
-        font-size: 1.12rem;
-      }
-    }
-
+/* 平板以上稍微拉寬整體排版 */
+@media (min-width: 834px) {
+  .hero {
+    padding: 2.8rem 0 2rem;
+  }
+  .hero-inner {
+    padding: 0 1.5rem;
+  }
+}
     /* ----------------------------------------------
        內文大圖（等比縮小、完整呈現）
     ---------------------------------------------- */
@@ -249,16 +237,25 @@
   <!-- ===================================================== -->
   <!--                     Hero 封面（V4）                    -->
   <!-- ===================================================== -->
-  <header class="hero">
-    <img src="qqball_final_00_hero_main.png" alt="主封面插圖">
-    <div class="hero-title">
-      <h1>ＱＱ球職人手作</h1>
-      <h2>甜的剛好，心的溫度。</h2>
-      <h3>夜色裡的攤車，一鍋油、一雙手，一段故事。</h3>
+  <section class="hero" aria-label="主視覺">
+  <div class="hero-inner container">
+    <div class="hero-visual">
+      <img
+        src="qqball_final_00_hero_main.png"
+        alt="夜色裡的攤車與油鍋，地瓜球在暖光中翻滾的畫面"
+        class="hero-img"
+      >
     </div>
-  </header>
 
-  <div class="container">
+    <div class="hero-text-block">
+      <h1 class="hero-title">ＱＱ球職人手作</h1>
+      <p class="hero-subtitle">甜的剛好，心的溫度。</p>
+      <p class="hero-tagline">
+        夜色裡的攤車，一鍋油、一雙手，一段故事。
+      </p>
+    </div>
+  </div>
+</section>
 
     <!-- ===================================================== -->
     <!--                     創作說明                          -->
