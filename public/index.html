@@ -26,8 +26,8 @@
   <meta name="twitter:image" content="qqball_final_share_fb.png">
 
   <!-- Preload Hero -->
-  <link rel="preload" as="image" href="qqball_final_00_hero_main.png">
-  <link rel="preload" as="image" href="qqball_final_00_hero_scene_v2.png">
+  <link rel="preload" as="image" href="qqball_hero_main.png">
+  <link rel="preload" as="image" href="qqball_hero_2.png">
 
   <style>
     :root{
@@ -483,13 +483,6 @@
       transform-origin:center;
     }
 
-    /* 讓 02–04 再亮一點，視覺接近 01、05 */
-    .story-block:nth-of-type(3) .story-img-wrap img,
-    .story-block:nth-of-type(4) .story-img-wrap img,
-    .story-block:nth-of-type(5) .story-img-wrap img{
-      filter:saturate(1.10) contrast(1.08) brightness(1.10);
-    }
-
     .story-text p{
       font-size:clamp(1.12rem,2.2vw,1.24rem);
     }
@@ -625,35 +618,6 @@
         radial-gradient(circle at 70% 80%, rgba(255,210,160,.20) 0%, transparent 65%);
       mix-blend-mode:soft-light;
       pointer-events:none;
-    }
-
-    /* 各張圖「重點特寫」位置＋亮度微調 */
-    .extra-slide:nth-of-type(1) .extra-img img{
-      /* 油鍋：整個鍋面與油光為主，略偏上 */
-      object-position:center 30%;
-    }
-
-    .extra-slide:nth-of-type(2) .extra-img img{
-      /* 粉糰：手掌＋粉糰為焦點，偏下 */
-      object-position:center 62%;
-      filter:saturate(1.18) contrast(1.12) brightness(1.18);
-    }
-
-    .extra-slide:nth-of-type(3) .extra-img img{
-      /* 手的語言：手＋鍋邊＋油花 */
-      object-position:center 55%;
-      filter:saturate(1.18) contrast(1.12) brightness(1.18);
-    }
-
-    .extra-slide:nth-of-type(4) .extra-img img{
-      /* 夜間攤車：上半身＋鍋上蒸氣＋光暈 */
-      object-position:center 38%;
-      filter:saturate(1.18) contrast(1.12) brightness(1.18);
-    }
-
-    .extra-slide:nth-of-type(5) .extra-img img{
-      /* 紙袋：紙袋上緣＋地瓜球亮點 */
-      object-position:center 58%;
     }
 
     .extra-text{
@@ -1047,18 +1011,6 @@
       text-decoration-thickness:1px;
       text-underline-offset:2px;
     }
-    
-    /* === Override：故事 02 / 03 / 04 圖片亮度微調，05 回復正常 === */
-.story-block:nth-of-type(2) .story-img-wrap img,
-.story-block:nth-of-type(3) .story-img-wrap img,
-.story-block:nth-of-type(4) .story-img-wrap img {
-  filter: brightness(1.06) contrast(1.06) saturate(1.12);
-}
-
-/* 05 章圖片恢復原本對比，不再加亮 */
-.story-block:nth-of-type(5) .story-img-wrap img {
-  filter: none;
-}
 
 /* iPad 橫向：封面圖與標題整體往上帶一點，讓一開站就看得到整鍋地瓜球 */
 @media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
@@ -1139,9 +1091,9 @@
       <div class="hero-media">
         <picture>
           <!-- 橫向裝置用橫式封面（Hero B） -->
-          <source srcset="qqball_final_00_hero_scene_v2.png" media="(orientation: landscape)">
+          <source srcset="qqball_hero_2.png" media="(orientation: landscape)">
           <!-- 其他狀況用直式封面 -->
-          <img src="qqball_final_00_hero_main.png" alt="夜色裡的地瓜球攤車，職人守在鍋邊翻動金黃地瓜球">
+          <img src="qqball_hero_main.png" alt="夜色裡的地瓜球攤車，職人守在鍋邊翻動金黃地瓜球">
         </picture>
         <div class="hero-smoke"></div>
       </div>
@@ -1196,7 +1148,7 @@
       <div class="story-inner">
         <div class="story-img-col">
           <div class="story-img-wrap">
-            <img src="qqball_final_01_story_frypan.png" alt="夜色裡的油鍋裡一顆顆金黃QQ球翻騰的畫面">
+            <img src="qqball_story_01.png" alt="夜色裡的油鍋裡一顆顆金黃QQ球翻騰的畫面">
           </div>
         </div>
         <div class="story-text-col story-text">
@@ -1231,7 +1183,7 @@
       <div class="story-inner">
         <div class="story-img-col">
           <div class="story-img-wrap">
-            <img src="qqball_final_02_story_dough.png" alt="職人雙手用力搓揉地瓜粉糰的畫面">
+            <img src="qqball_story_02.png" alt="職人雙手用力搓揉地瓜粉糰的畫面">
           </div>
         </div>
         <div class="story-text-col story-text">
@@ -1265,7 +1217,7 @@
       <div class="story-inner">
         <div class="story-img-col">
           <div class="story-img-wrap">
-            <img src="qqball_final_03_story_hands.png" alt="職人雙手握著濾網，細心翻動油鍋裡的地瓜球">
+            <img src="qqball_story_03.png" alt="職人雙手握著濾網，細心翻動油鍋裡的地瓜球">
           </div>
         </div>
         <div class="story-text-col story-text">
@@ -1299,7 +1251,7 @@
       <div class="story-inner">
         <div class="story-img-col">
           <div class="story-img-wrap">
-            <img src="qqball_final_04_story_nightcart.png" alt="夜色裡的小攤車，職人站在鍋邊的背影">
+            <img src="qqball_story_04.png" alt="夜色裡的小攤車，職人站在鍋邊的背影">
           </div>
         </div>
         <div class="story-text-col story-text">
@@ -1335,7 +1287,7 @@
       <div class="story-inner">
         <div class="story-img-col">
           <div class="story-img-wrap">
-            <img src="qqball_final_05_story_warmbag.png" alt="一袋裝滿金黃地瓜球的牛皮紙袋，被暖光照亮">
+            <img src="qqball_story_05.png" alt="一袋裝滿金黃地瓜球的牛皮紙袋，被暖光照亮">
           </div>
         </div>
         <div class="story-text-col story-text">
@@ -1389,7 +1341,7 @@
           <!-- slide 1 -->
           <article class="extra-slide active">
             <div class="extra-img">
-              <img src="qqball_final_extra_01_frypan_closeup.png" alt="油鍋特寫，金黃地瓜球在油面上鼓起翻動">
+              <img src="qqball_extra_01.png" alt="油鍋特寫，金黃地瓜球在油面上鼓起翻動">
             </div>
             <div class="extra-text">
               <div class="extra-label">❶ 油光的跳動｜亮起來的，是甜的開始</div>
@@ -1404,7 +1356,7 @@
           <!-- slide 2 -->
           <article class="extra-slide">
             <div class="extra-img">
-              <img src="qqball_final_extra_02_dough_closeup.PNG" alt="職人的手揉著粉糰，粉糰在掌心逐漸變圓">
+              <img src="qqball_extra_02.png" alt="職人的手揉著粉糰，粉糰在掌心逐漸變圓">
             </div>
             <div class="extra-text">
               <div class="extra-label">❷ 粉糰的成形｜手裡的溫度，比配方重要</div>
@@ -1419,7 +1371,7 @@
           <!-- slide 3 -->
           <article class="extra-slide">
             <div class="extra-img">
-              <img src="qqball_final_extra_03_frypan_night.png" alt="夜色背景下，油鍋與金黃地瓜球發出微光">
+              <img src="qqball_extra_03.png" alt="夜色背景下，油鍋與金黃地瓜球發出微光">
             </div>
             <div class="extra-text">
               <div class="extra-label">❸ 手的語言｜藏在指尖的耐心與節奏</div>
@@ -1436,7 +1388,7 @@
           <!-- slide 4（標題已改成你指定的版本） -->
           <article class="extra-slide">
             <div class="extra-img">
-              <img src="qqball_final_extra_04_cart_night_atmos.png" alt="夜裡的小攤車，燈光與蒸氣在風中交疊">
+              <img src="qqball_extra_04.png" alt="夜裡的小攤車，燈光與蒸氣在風中交疊">
             </div>
             <div class="extra-text">
               <div class="extra-label">❹ 夜色裡的攤車｜風裡、光裡、他的身影</div>
@@ -1452,7 +1404,7 @@
           <!-- slide 5 -->
           <article class="extra-slide">
             <div class="extra-img">
-              <img src="qqball_final_extra_05_bag_glow_closeup.png" alt="雙手捧著一袋QQ球，紙袋被暖光照亮">
+              <img src="qqball_extra_05.png" alt="雙手捧著一袋QQ球，紙袋被暖光照亮">
             </div>
             <div class="extra-text">
               <div class="extra-label">❺ 那一袋剛剛好的甜｜在心裡停留的瞬間</div>
