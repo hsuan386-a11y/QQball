@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>ＱＱ球職人手作｜甜的剛好，心的溫度。</title>
+  <meta name="description" content="夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://q-qball.vercel.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ＱＱ球職人手作">
+  <meta property="og:url" content="https://q-qball.vercel.app/">
+  <meta property="og:title" content="ＱＱ球職人手作｜甜的剛好，心的溫度。">
+  <meta property="og:description" content="夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。">
+  <meta property="og:image" content="qqball_final_share_fb.png">
+  <meta property="og:image:alt" content="雙手捧著一袋熱騰騰QQ球的畫面">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ＱＱ球職人手作｜甜的剛好，心的溫度。">
+  <meta name="twitter:description" content="夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。">
+  <meta name="twitter:image" content="qqball_final_share_fb.png">
+
+  <!-- Preload Hero -->
+  <link rel="preload" as="image" href="qqball_final_00_hero_main.png">
+  <link rel="preload" as="image" href="qqball_final_00_hero_scene_v2.png">
+
+  <style>
+    :root {
+  /* Extra ❶～❺：預設先當作手機版的數值（>=768 會被後面的 media 覆寫） */
+  /* scale：放大倍率；pos-x / pos-y：構圖位置；brightness：亮度 */
+
+  /* Slide 1：聚焦油光 + 地瓜球 */
+  --extra1-scale: 1.08;
+  --extra1-pos-x: 50%;
+  --extra1-pos-y: 40%;
+  --extra1-brightness: 0.95;  /* 稍微壓一點亮度，避免過曝 */
+
+  /* Slide 2：完整雙手 + 粉糰 + 桌面粉末 */
+  --extra2-scale: 1.03;
+  --extra2-pos-x: 50%;
+  --extra2-pos-y: 44%;
+  --extra2-brightness: 1.0;
+
+  /* Slide 3：手 +油勺+鍋邊 + 部分地瓜球 */
+  --extra3-scale: 1.06;
+  --extra3-pos-x: 48%;
+  --extra3-pos-y: 42%;
+  --extra3-brightness: 0.95;  /* 這張你覺得偏亮，也稍微壓一點 */
+
+  /* Slide 4：要看到燈光 + 背影 + 整台攤車 */
+  --extra4-scale: 0.97;       /* 稍微縮小一點，好讓整台攤車入鏡 */
+  --extra4-pos-x: 50%;
+  --extra4-pos-y: 52%;
+  --extra4-brightness: 1.0;
+
+  /* Slide 5：袋子 + 地瓜球 + 雙手，畫面上緣留一點燈光 */
+  --extra5-scale: 1.04;
+  --extra5-pos-x: 50%;
+  --extra5-pos-y: 45%;
+  --extra5-brightness: 0.97;
+}
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+    img{max-width:100%;display:block;}
+
+    body{
+      font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+      background:radial-gradient(circle at top,#F9F0E4 0,#F3E8D8 45%,#E8D8C4 100%);
+      color:var(--ink);
+      line-height:1.9;
+      font-size:clamp(18px,2.4vw,20px);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    main{
+      width:min(92%,var(--container-max));
+      margin:0 auto 2.4rem;
+      padding-bottom:1.2rem;
+    }
+
+    p{
+      color:var(--ink-soft);
+      font-size:clamp(1.08rem,2.1vw,1.18rem);
+      line-height:1.95;
+      margin:.55rem 0;
+    }
+
+    p + p{margin-top:.75rem;}
+
+    /* ================= HERO WRAPPER ================= */
+
+    .hero-shell{
+      position:relative;
+      max-width:1200px;
+      margin:0 auto 2.4rem;
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:
+        0 20px 55px rgba(0,0,0,.32),
+        0 0 0 1px rgba(255,255,255,.06);
+    }
+
+    @media (max-width:768px){
+      .hero-shell{
+        border-radius:0;
+        margin:0 0 2.1rem;
+      }
+    }
+
+    /* ================= HERO ================= */
+
+    .hero{
+      position:relative;
+      width:100%;
+      margin:0;
+      padding:0;
+      border-radius:0;
+      overflow:visible;
+      isolation:isolate;
+      background:#000;
+    }
+
+    .hero-media{
+      position:relative;
+      width:100%;
+      overflow:hidden;
+    }
+
+    .hero-media picture,
+    .hero-media img{
+      width:100%;
+      height:auto;
+      display:block;
+      filter:none;
+      transform:scale(1.02);
+      transform-origin:center;
+    }
+
+    /* 油鍋暖光（下半部油光） */
+    .hero-media::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:72%;
+      transform:translateX(-50%);
+      width:78%;
+      height:46%;
+      background:
+        radial-gradient(circle at 50% 8%,
+          rgba(255,215,150,.55) 0%,
+          rgba(255,190,120,.30) 32%,
+          rgba(0,0,0,0) 78%);
+      pointer-events:none;
+      mix-blend-mode:screen;
+    }
+
+    /* 上層漸層 + 煙霧感 */
+    .hero-media::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 30% 0%,
+          rgba(255,255,255,.18) 0%,
+          rgba(255,255,255,0) 45%),
+        radial-gradient(circle at 78% -10%,
+          rgba(255,240,220,.26) 0%,
+          rgba(0,0,0,0) 55%),
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,0.12) 0%,
+          rgba(0,0,0,0.32) 46%,
+          rgba(0,0,0,0.58) 100%
+        );
+      pointer-events:none;
+      mix-blend-mode:soft-light;
+    }
+
+    /* 浮動煙氣層 */
+    .hero-smoke{
+      pointer-events:none;
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 10%,
+          rgba(255,255,255,.06) 0,
+          transparent 45%),
+        radial-gradient(circle at 75% 15%,
+          rgba(255,255,255,.10) 0,
+          transparent 58%);
+      mix-blend-mode:screen;
+      opacity:.9;
+    }
+
+    .hero-text{
+      position:absolute;
+      left:50%;
+      top:64%;
+      transform:translate(-50%,-50%);
+      width:86%;
+      max-width:820px;
+      color:#FFF7ED;
+      text-align:left;
+      text-shadow:0 3px 10px rgba(0,0,0,.7);
+      display:flex;
+      flex-direction:column;
+      gap:.3rem;
+    }
+
+    .hero-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.26rem .9rem;
+      border-radius:999px;
+      font-size:.84rem;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      background:rgba(20,10,0,.30);
+      color:#FFEAD1;
+      margin-bottom:.7rem;
+      border:1px solid rgba(255,245,230,.8);
+      backdrop-filter:blur(10px);
+      box-shadow:0 4px 14px rgba(0,0,0,.42);
+      width:max-content;
+      white-space:nowrap;
+      max-width:100%;
+    }
+
+    .hero-tag-dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:linear-gradient(145deg,#F2C27C,#D98C46);
+      box-shadow:0 0 0 2px rgba(255,255,255,.65);
+    }
+
+    .hero-title{
+      font-size:clamp(2.6rem,4.1vw,3.2rem);
+      font-weight:800;
+      letter-spacing:.1em;
+      margin-bottom:.12rem;
+    }
+
+    .hero-sub{
+      font-size:clamp(1.55rem,2.8vw,2.05rem);
+      font-weight:700;
+      margin-bottom:.5rem;
+      color:#FFE7C8;
+    }
+
+    .hero-line{
+      font-size:clamp(1.08rem,2vw,1.27rem);
+      max-width:34em;
+      color:#FFEFDC;
+    }
+
+    @media (max-width:1024px){
+      .hero-text{
+        top:62%;
+        width:88%;
+      }
+    }
+
+    @media (max-width:768px){
+      .hero-text{
+        top:60%;
+        width:90%;
+      }
+      .hero-tag{
+        font-size:.78rem;
+        padding:.24rem .8rem;
+      }
+      .hero-title{
+        font-size:2.2rem;
+      }
+      .hero-sub{
+        font-size:1.4rem;
+      }
+      .hero-line{
+        font-size:1.04rem;
+      }
+    }
+
+    @media (max-width:480px){
+      .hero-text{
+        top:60%;
+        width:90%;
+      }
+      .hero-tag{
+        font-size:.76rem;
+        padding:.2rem .78rem;
+      }
+      .hero-title{
+        font-size:2rem;
+      }
+      .hero-sub{
+        font-size:1.24rem;
+      }
+      .hero-line{
+        font-size:1rem;
+      }
+    }
+
+    /* iPad 橫向：封面往上帶＋放大一點，打開就看到整鍋地瓜球，同時避免下方露黑 */
+    @media (min-width:1024px) and (max-width:1366px) and (orientation:landscape){
+      .hero-media picture,
+      .hero-media img{
+        transform:translateY(-6%) scale(1.08);
+        transform-origin:center center;
+      }
+      .hero-text{
+        top:56%;
+      }
+    }
+
+/* 橫向裝置：讓封面油鍋更亮、更有油光感 */
+@media (orientation: landscape){
+  .hero-media::before{
+    top: 76%;              /* 再往下一點，鎖定鍋面 */
+    width: 82%;
+    height: 52%;
+    background:
+      radial-gradient(
+        circle at 50% 15%,
+        rgba(255, 225, 170, 0.80) 0%,
+        rgba(255, 190, 120, 0.45) 28%,
+        rgba(120, 70, 20, 0.10) 55%,
+        rgba(0, 0, 0, 0) 82%
+      );
+    mix-blend-mode: screen;   /* 保持油光亮但不破壞原圖色調 */
+  }
+
+  .hero-media img{
+    filter: saturate(1.08) contrast(1.06) brightness(1.06);
+  }
+}
+    /* 手機：封面也略上移，著重油鍋與地瓜球 */
+    @media (max-width:600px){
+      .hero-media picture,
+      .hero-media img{
+        transform:translateY(-4%) scale(1.06);
+      }
+    }
+
+    /* ================= 卡片 / 標題 ================= */
+
+    .card{
+      background:var(--card);
+      border-radius:22px;
+      padding:2rem 1.9rem;
+      margin:0 auto 2.1rem;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.08),
+        0 0 0 1px rgba(255,255,255,.8);
+      border:1px solid rgba(224,210,195,.7);
+    }
+
+    @media (max-width:768px){
+      .card{
+        border-radius:18px;
+        padding:1.7rem 1.5rem;
+        margin-bottom:1.9rem;
+      }
+    }
+
+    .section-title{
+      font-size:clamp(1.56rem,2.6vw,1.8rem);
+      font-weight:800;
+      color:#5A3A1C;
+      margin-bottom:1rem;
+      letter-spacing:.08em;
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+    }
+
+    .section-title::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-.35rem;
+      width:70%;
+      max-width:140px;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(to right,rgba(198,120,58,.98),rgba(198,120,58,0));
+    }
+
+    .section-title-badge{
+      font-size:.78rem;
+      font-weight:700;
+      padding:.18rem .5rem;
+      border-radius:999px;
+      border:1px solid rgba(198,120,58,.35);
+      color:#8A5A32;
+      background:rgba(247,232,211,.7);
+      letter-spacing:.14em;
+    }
+
+    .extra-header .section-title{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:.3rem;
+      padding-bottom:.15rem;
+    }
+
+    /* ================= 創作說明 & 前言 ================= */
+
+    .intro-block{
+      margin-bottom:2.3rem;
+    }
+
+    .intro-block + .intro-block{
+      margin-top:-.15rem;
+    }
+
+    .intro-block p{
+      text-indent:0;
+    }
+
+    /* ================= 故事 01–05 ================= */
+
+    .story-block{
+      margin:0 auto 2.8rem;
+    }
+
+    .story-inner{
+      background:var(--card);
+      border-radius:22px;
+      padding:1.95rem 1.7rem 2.2rem;
+      box-shadow:
+        0 12px 36px rgba(0,0,0,.12),
+        0 0 0 1px rgba(255,255,255,.8);
+      border:1px solid rgba(224,210,195,.7);
+      display:grid;
+      grid-template-columns:1fr;
+      gap:1.7rem;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .story-inner::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 10% 0%,
+          rgba(255,255,255,.16) 0,
+          transparent 55%),
+        radial-gradient(circle at 100% 0%,
+          rgba(255,246,230,.20) 0,
+          transparent 62%);
+      mix-blend-mode:soft-light;
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .story-inner > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .story-eyebrow{
+      font-size:.96rem;
+      font-weight:600;
+      color:#8A5A32;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:.3rem;
+    }
+
+    .story-heading{
+      font-size:clamp(1.6rem,2.5vw,1.9rem);
+      font-weight:800;
+      color:#5A3A1C;
+      margin-bottom:1.1rem;
+      position:relative;
+    }
+
+    .story-heading::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-.4rem;
+      width:82px;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(to right,rgba(198,120,58,.95),rgba(198,120,58,0));
+    }
+
+    .story-img-wrap{
+      max-width:620px;
+      margin:.1rem auto .3rem;
+      border-radius:20px;
+      overflow:hidden;
+      background:#111;
+      box-shadow:
+        0 12px 30px rgba(0,0,0,.3),
+        0 0 0 1px rgba(255,255,255,.06);
+      position:relative;
+      isolation:isolate;
+    }
+
+    .story-img-wrap::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 12%,
+          rgba(255,218,150,.30) 0,
+          transparent 58%),
+        linear-gradient(to bottom,
+          rgba(0,0,0,0) 0%,
+          rgba(0,0,0,.26) 100%);
+      mix-blend-mode:soft-light;
+      pointer-events:none;
+    }
+
+    .story-img-wrap::after{
+      content:"";
+      position:absolute;
+      inset:-6%;
+      border-radius:inherit;
+      border:1px solid rgba(255,255,255,.16);
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+
+    .story-img-wrap img{
+      width:100%;
+      height:auto;
+      display:block;
+      filter:saturate(1.08) contrast(1.06) brightness(1.05);
+      transform:scale(1.01);
+      transform-origin:center;
+    }
+
+    .story-text p{
+      font-size:clamp(1.12rem,2.2vw,1.24rem);
+    }
+
+    @media (min-width:900px){
+      .story-inner{
+        grid-template-columns:minmax(0,1.04fr) minmax(0,1.06fr);
+        padding:2.15rem 2.1rem 2.35rem;
+        gap:2.15rem;
+      }
+      .story-block:nth-of-type(even) .story-inner{
+        grid-template-columns:minmax(0,1.06fr) minmax(0,1.04fr);
+      }
+      .story-block:nth-of-type(even) .story-img-col{
+        order:2;
+      }
+      .story-block:nth-of-type(even) .story-text-col{
+        order:1;
+      }
+    }
+
+    @media (max-width:768px){
+      .story-inner{
+        padding:1.8rem 1.45rem 1.95rem;
+        gap:1.5rem;
+      }
+      .story-heading{
+        font-size:1.45rem;
+      }
+    }
+
+    /* 02 / 03 / 04：再加亮一點，跟 01 更接近 */
+    .story-block:nth-of-type(2) .story-img-wrap img,
+    .story-block:nth-of-type(3) .story-img-wrap img,
+    .story-block:nth-of-type(4) .story-img-wrap img{
+      filter:brightness(1.14) contrast(1.18) saturate(1.16);
+    }
+
+    /* 05：增加一點油亮感，但不要過曝 */
+    .story-block:nth-of-type(5) .story-img-wrap img{
+      filter:brightness(1.12) contrast(1.12) saturate(1.12);
+    }
+
+    .story-block:nth-of-type(5) .story-img-wrap::before{
+      background:
+        radial-gradient(circle at 50% 40%,
+          rgba(255,220,150,.32) 0,
+          transparent 60%),
+        linear-gradient(to bottom,
+          rgba(0,0,0,0) 0%,
+          rgba(0,0,0,.22) 100%);
+      mix-blend-mode:soft-light;
+    }
+
+    /* ================= Extra（精品畫冊式） ================= */
+    /* iPad 直式（768～1023px）：再往上拉一些特寫 */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  :root {
+    --extra1-scale: 1.1;
+    --extra1-pos-y: 37%;
+
+    --extra2-scale: 1.06;
+    --extra2-pos-y: 42%;
+
+    --extra3-scale: 1.08;
+    --extra3-pos-y: 40%;
+
+    --extra4-scale: 0.98;
+    --extra4-pos-y: 54%;
+
+    --extra5-scale: 1.06;
+    --extra5-pos-y: 43%;
+  }
+}
+
+/* iPad 橫式 / 桌機（>=1024px）：你 Extra 區主要看的尺寸 */
+@media (min-width: 1024px) {
+  :root {
+    --extra1-scale: 1.12;  /* 橫向空間較大，可以再放大一點 */
+    --extra1-pos-y: 38%;
+
+    --extra2-scale: 1.08;
+    --extra2-pos-y: 43%;
+
+    --extra3-scale: 1.1;
+    --extra3-pos-y: 41%;
+
+    --extra4-scale: 1.0;
+    --extra4-pos-y: 55%;  /* 讓燈光 + 背影 + 攤車都進來 */
+
+    --extra5-scale: 1.08;
+    --extra5-pos-y: 44%;
+  }
+}
+    .extra-section{
+      margin:2.2rem auto 3.2rem;
+    }
+
+    .extra-shell{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:1.8rem;
+    }
+
+    .extra-header{
+      margin-bottom:.3rem;
+    }
+
+    .extra-header p{
+      font-size:clamp(1.08rem,2.1vw,1.18rem);
+      max-width:40em;
+      margin-top:.75rem;
+    }
+
+    .extra-header p + p{
+      margin-top:.55rem;
+    }
+
+    .extra-header-sub{
+      font-size:.94rem;
+      color:#7E5A39;
+      margin-top:.5rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .extra-slider-card{
+      background:var(--card);
+      border-radius:20px;
+      padding:1.7rem 1.6rem 1.9rem;
+      box-shadow:
+        0 12px 32px rgba(0,0,0,.12),
+        0 0 0 1px rgba(255,255,255,.8);
+      border:1px solid rgba(224,210,195,.7);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .extra-slider{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+    }
+
+    .extra-slides{
+      position:relative;
+      width:100%;
+    }
+
+    .extra-slide{
+      display:none;
+    }
+
+    .extra-slide.active{
+      display:flex;
+      flex-direction:column;
+      gap:1.1rem;
+    }
+
+    .extra-img{
+      border-radius:16px;
+      overflow:hidden;
+      background:#111;
+      box-shadow:
+        0 12px 30px rgba(0,0,0,.34),
+        0 0 0 1px rgba(255,255,255,.08);
+      max-height:440px;
+      position:relative;
+      flex:0 0 auto;
+      cursor:pointer; /* 點擊進入放大檢視 */
+    }
+
+    .extra-img img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+      filter:saturate(1.16) contrast(1.10) brightness(1.12);
+      transform:scale(1.05);
+      transform-origin:center;
+      transition:transform .18s ease;
+    }
+
+    .extra-img:hover img{
+      transform:scale(1.07);
+    }
+
+    .extra-img::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255,240,200,.30) 0%, transparent 65%),
+        radial-gradient(circle at 70% 80%, rgba(255,210,160,.20) 0%, transparent 65%);
+      mix-blend-mode:soft-light;
+      pointer-events:none;
+    }
+
+    /* 各張圖「重點特寫」位置＋亮度微調（桌機基準） */
+    .extra-slide:nth-of-type(1) .extra-img img{
+      object-position:center 32%;
+      filter:saturate(1.08) contrast(1.06) brightness(1.06);
+    }
+
+    .extra-slide:nth-of-type(2) .extra-img img{
+      object-position:center 62%;
+      filter:saturate(1.16) contrast(1.12) brightness(1.14);
+    }
+
+    .extra-slide:nth-of-type(3) .extra-img img{
+      object-position:center 58%;
+      filter:saturate(1.10) contrast(1.06) brightness(1.08);
+    }
+
+    .extra-slide:nth-of-type(4) .extra-img img{
+      object-position:center 40%;
+      filter:saturate(1.14) contrast(1.10) brightness(1.10);
+    }
+
+    .extra-slide:nth-of-type(5) .extra-img img{
+      object-position:center 56%;
+      filter:saturate(1.12) contrast(1.10) brightness(1.12);
+    }
+
+    .extra-text{
+      flex:1 1 auto;
+    }
+
+    .extra-label{
+      font-size:clamp(1.06rem,2.1vw,1.18rem);
+      font-weight:700;
+      color:#5A3A1C;
+      margin-bottom:.4rem;
+      letter-spacing:.06em;
+    }
+
+    .extra-caption{
+      font-size:clamp(1.06rem,2vw,1.16rem);
+      font-style:italic;
+      max-width:32em;
+      color:#5A3A1C;
+      line-height:1.9;
+    }
+
+    .extra-footer{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      margin-top:.6rem;
+      font-size:.9rem;
+      color:#8A5A32;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .extra-counter{
+      display:flex;
+      align-items:center;
+      gap:.35rem;
+      white-space:nowrap;
+    }
+
+    .extra-counter span{
+      display:inline-block;
+    }
+
+    .extra-counter-current{
+      font-weight:700;
+      font-size:.98rem;
+    }
+
+    .extra-counter-total{
+      opacity:.7;
+    }
+
+    .extra-dots{
+      display:flex;
+      justify-content:center;
+      gap:6px;
+      flex:0 0 auto;
+    }
+
+    .extra-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:#D3C2AE;
+      border:none;
+      padding:0;
+      cursor:pointer;
+      transition:all .18s ease;
+    }
+
+    .extra-dot.active{
+      width:20px;
+      background:#C6783A;
+    }
+
+    .extra-meta-tag{
+      padding:.18rem .6rem;
+      border-radius:999px;
+      border:1px solid rgba(198,120,58,.35);
+      background:rgba(247,232,211,.7);
+      font-size:.84rem;
+      white-space:nowrap;
+    }
+
+    .extra-arrows{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:.75rem;
+      margin-top:.5rem;
+    }
+
+    .extra-nav{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      border:none;
+      background:rgba(55,40,28,.95);
+      color:#FAF7F2;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      box-shadow:0 4px 10px rgba(0,0,0,.3);
+      transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+    }
+
+    .extra-nav span{
+      font-size:1.4rem;
+      line-height:1;
+    }
+
+    .extra-nav:hover{
+      transform:translateY(-1px) scale(1.03);
+      box-shadow:0 6px 14px rgba(0,0,0,.4);
+      background:rgba(55,40,28,1);
+    }
+
+    /* 小提示：讓「上一張／下一張」更直覺 */
+    .extra-arrow-hint{
+      margin-top:.25rem;
+      text-align:center;
+      font-size:.8rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#8A5A32;
+      opacity:.85;
+    }
+
+    .extra-arrow-hint span{
+      font-family:system-ui,-apple-system,sans-serif;
+    }
+
+    /* 手機：整個 Extra 區塊盡量塞在一個畫面內，圖加大一點 */
+    @media (max-width:480px){
+      .extra-shell{
+        gap:1.4rem;
+      }
+      .extra-slider-card{
+        padding:1.5rem 1.25rem 1.7rem;
+      }
+      .extra-header p{
+        font-size:1rem;
+      }
+      .extra-img{
+        max-height:340px;
+      }
+      .extra-caption{
+        font-size:.98rem;
+      }
+      .extra-footer{
+        flex-wrap:wrap;
+        gap:.5rem .75rem;
+      }
+      .extra-meta-tag{
+        font-size:.8rem;
+      }
+    }
+
+    /* iPad 直向：Extra 單欄堆疊，圖放大置中特寫＋依照你指定重點調整構圖 */
+    @media (min-width:768px) and (max-width:1024px) and (orientation:portrait){
+      .extra-shell{
+        grid-template-columns:1fr;
+      }
+      .extra-slider-card{
+        padding:1.6rem 1.3rem 1.9rem;
+      }
+      .extra-img{
+        max-height:420px;
+        margin:0 auto;
+      }
+
+      .extra-slide:nth-of-type(1) .extra-img img{
+        object-position:center 40%; /* 油鍋 + 地瓜球 */
+        transform:scale(1.06);
+      }
+      .extra-slide:nth-of-type(2) .extra-img img{
+        object-position:center 70%; /* 手 + 粉糰 + 桌面粉末 */
+        transform:scale(1.06);
+      }
+      .extra-slide:nth-of-type(3) .extra-img img{
+        object-position:center 64%; /* 多露出鍋邊與地瓜球 */
+        transform:scale(1.06);
+      }
+      .extra-slide:nth-of-type(4) .extra-img img{
+        object-position:center 46%; /* 下移：燈光＋背影＋整台攤車 */
+        transform:scale(1.0);
+      }
+      .extra-slide:nth-of-type(5) .extra-img img{
+        object-position:center 66%; /* 紙袋＋手＋地瓜球 */
+        transform:scale(1.06);
+      }
+    }
+
+    /* 平板 / 桌機：左文右圖＋圖文並排 */
+    @media (min-width:900px){
+      .extra-shell{
+        grid-template-columns:minmax(0,2.1fr) minmax(0,2.9fr);
+        align-items:flex-start;
+      }
+      .extra-slider-card{
+        margin-top:.3rem;
+      }
+      .extra-slide.active{
+        flex-direction:row;
+        align-items:center;
+        gap:1.8rem;
+      }
+      .extra-img{
+        flex:0 0 52%;
+        max-height:460px;
+      }
+      .extra-text{
+        flex:1 1 auto;
+      }
+    }
+
+    /* iPad 橫向：再給 Extra 圖多一點左右空間、上下略裁切成「特寫」感 */
+    @media (min-width:1024px) and (max-width:1366px) and (orientation:landscape){
+      .extra-shell{
+        grid-template-columns:minmax(0,2fr) minmax(0,3.1fr);
+      }
+      .extra-img{
+        max-height:420px;
+      }
+      .extra-slide .extra-img img{
+        transform:scale(1.07);
+      }
+      .extra-slide:nth-of-type(1) .extra-img img{
+        object-position:center 38%;
+      }
+      .extra-slide:nth-of-type(2) .extra-img img{
+        object-position:center 70%;
+      }
+      .extra-slide:nth-of-type(3) .extra-img img{
+        object-position:center 64%;
+      }
+      .extra-slide:nth-of-type(4) .extra-img img{
+        object-position:center 48%;
+      }
+      .extra-slide:nth-of-type(5) .extra-img img{
+        object-position:center 66%;
+      }
+    }
+
+    /* 手機版：Extra footer 置中＋依你說的構圖再微調一次 */
+    @media (max-width:600px){
+      .extra-footer{
+        justify-content:center !important;
+        text-align:center;
+        flex-wrap:wrap;
+      }
+
+      .extra-img{
+        max-height:360px;
+      }
+
+      /* ❶ 油鍋：往上移，看得到油光＋地瓜球 */
+      .extra-slide:nth-of-type(1) .extra-img img{
+        object-position:center 38%;
+      }
+
+      /* ❷ 粉糰：上移看到手＋粉糰＋桌面粉末 */
+      .extra-slide:nth-of-type(2) .extra-img img{
+        object-position:center 72%;
+      }
+
+      /* ❸ 手的語言：再上移一點，多露出鍋邊與地瓜球 */
+      .extra-slide:nth-of-type(3) .extra-img img{
+        object-position:center 64%;
+      }
+
+      /* ❹ 攤車：稍微縮小、下移，燈光＋背影＋整台攤車入鏡 */
+      .extra-slide:nth-of-type(4) .extra-img img{
+        object-position:center 50%;
+        transform:scale(0.98);
+      }
+
+      /* ❺ 紙袋：再上移些，紙袋＋手＋地瓜球更完整 */
+      .extra-slide:nth-of-type(5) .extra-img img{
+        object-position:center 66%;
+      }
+    }
+    
+        /* ================= 幕後手記 ================= */
+
+    .note-section{
+      margin:0 auto 2.7rem;
+    }
+
+    .note-section .section-title{
+      padding-bottom:.4rem;
+    }
+
+    /* ================= 分享區 ================= */
+
+    .share-section{
+      text-align:center;
+      margin:0 auto 2rem;
+    }
+
+    .share-section .card{
+      max-width:720px;
+    }
+
+    .share-heading{
+      font-size:clamp(1.18rem,2.3vw,1.32rem);
+      font-weight:700;
+      color:#5A3A1C;
+      margin-bottom:.8rem;
+      line-height:1.7;
+    }
+
+    .share-heading-sub{
+      display:block;
+      font-size:1.04rem;
+      margin-top:.1rem;
+      color:#7A5634;
+      font-weight:500;
+      letter-spacing:.08em;
+    }
+
+    .share-lead-top{
+      font-size:clamp(1.08rem,2.1vw,1.18rem);
+      margin-bottom:.65rem;
+      font-style:italic;
+    }
+
+    .share-lead-mid{
+      font-size:clamp(1.08rem,2.1vw,1.18rem);
+      margin-top:.3rem;
+      font-weight:600;
+    }
+
+    .share-buttons{
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+      margin-top:1.35rem;
+    }
+
+    .share-btn{
+      text-decoration:none;
+      color:#fff;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:.45rem;
+    }
+
+    .share-icon{
+      width:68px;
+      height:68px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 4px 12px rgba(0,0,0,.22);
+      overflow:hidden;
+      background:#fff;
+      transition:transform .16s ease,box-shadow .16s ease;
+      font-weight:800;
+      letter-spacing:.08em;
+      font-size:.8rem;
+    }
+
+    .share-icon-text{
+      display:inline-block;
+    }
+
+    .share-icon--line{
+      background:#00C300;
+      color:#000;
+    }
+
+    .share-icon--fb{
+      background:#1877F2;
+      color:#fff;
+      font-size:1.4rem;
+      font-weight:900;
+    }
+
+    .share-icon--threads{
+      background:#000;
+      color:#fff;
+      font-size:1.4rem;
+      font-weight:900;
+    }
+
+    .share-label{
+      font-size:.85rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#5A3A1C;
+      font-weight:700;
+    }
+
+    .share-btn:hover .share-icon{
+      transform:translateY(-1px) scale(1.03);
+      box-shadow:0 6px 16px rgba(0,0,0,.25);
+    }
+
+    .share-note{
+      margin-top:1.1rem;
+      font-size:1.02rem;
+      color:#6B4A30;
+      font-weight:500;
+      letter-spacing:.03em;
+    }
+
+    .share-note br{
+      display:none;
+    }
+
+    @media (max-width:768px){
+      .share-note br{
+        display:inline;
+      }
+    }
+
+    /* ================= 頁尾 ================= */
+
+    footer{
+      background:#E6D6C3;
+      border-top:1px solid #D7C7B4;
+      padding:1.6rem 1rem 2.3rem;
+      text-align:center;
+      font-size:1rem;
+      color:#5A3A1C;
+    }
+
+    footer .credit-main{
+      margin-bottom:.4rem;
+    }
+
+    footer .credit-main span{
+      font-weight:600;
+    }
+
+    .slogan{
+      margin-bottom:.9rem;
+      font-size:1.06rem;
+      font-weight:700;
+      letter-spacing:.04em;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:.4rem;
+    }
+
+    .slogan-icon{
+      display:inline-flex;
+      width:22px;
+      height:22px;
+    }
+
+    .slogan-icon svg{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+
+    footer .links{
+      line-height:1.9;
+    }
+
+    footer a{
+      color:#5A3A1C;
+      text-decoration:underline;
+      text-decoration-thickness:1px;
+      text-underline-offset:2px;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <!-- ================= HERO ================= -->
+  <div class="hero-shell">
+    <header class="hero" aria-label="封面">
+      <div class="hero-media">
+        <picture>
+          <!-- 橫向裝置用橫式封面 -->
+          <source srcset="qqball_final_00_hero_scene_v2.png" media="(orientation: landscape)">
+          <!-- 其他狀況用直式封面 -->
+          <img src="qqball_final_00_hero_main.png" alt="夜色裡的地瓜球攤車，職人守在鍋邊翻動金黃地瓜球">
+        </picture>
+        <div class="hero-smoke"></div>
+      </div>
+      <div class="hero-text">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          <span>QQBALL · HANDMADE</span>
+        </div>
+        <h1 class="hero-title">ＱＱ球職人手作</h1>
+        <div class="hero-sub">甜的剛好｜心的溫度</div>
+        <div class="hero-line">夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。</div>
+      </div>
+    </header>
+  </div>
+
+  <main>
+
+    <!-- ================= 創作說明 & 前言 ================= -->
+    <section class="card intro-block" aria-labelledby="about">
+      <h2 id="about" class="section-title">
+        創作說明
+        <span class="section-title-badge">PERSONAL WORK</span>
+      </h2>
+
+      <p>
+        本作品為個人設計與文案練習。「QQ球職人手作」為虛構主題，  
+        以插畫、敘事與品牌氛圍，探索 <strong>職人精神 × 手作溫度 × 敘事美學</strong> 的可能性。
+      </p>
+      <p>
+        這不是商業作品，而是一份對「手作」的喜愛與致敬。  
+        若這些畫面能在您心裡留下一絲柔軟，那便是這份創作最想傳遞的溫度。
+      </p>
+    </section>
+
+    <section class="card intro-block" aria-labelledby="intro">
+      <h2 id="intro" class="section-title">
+        前言
+        <span class="section-title-badge">STORY OPENING</span>
+      </h2>
+
+      <p>
+        傍晚的淡水街角，總飄著一股熟悉的香味——  
+        金黃地瓜球剛起鍋的聲音，像日常裡最溫柔的問候。
+      </p>
+      <p>
+        故事從一鍋油開始，也從一雙願意把簡單日常做得更好的手開始。  
+        請跟我一起靠近這台小攤車；看看一個職人，是如何把每一件小事做到恰如其分。
+      </p>
+    </section>
+
+    <!-- ================= 01 ================= -->
+    <article class="story-block" aria-labelledby="s01">
+      <div class="story-inner">
+        <div class="story-img-col">
+          <div class="story-img-wrap">
+            <img src="qqball_story_01.png" alt="夜色裡的油鍋裡一顆顆金黃QQ球翻騰的畫面">
+          </div>
+        </div>
+        <div class="story-text-col story-text">
+          <div class="story-eyebrow">01｜天氣轉涼的那天</div>
+          <h3 id="s01" class="story-heading">香氣出鍋，故事開場</h3>
+
+          <p>
+            空氣開始變得柔軟，淡水街頭的風也多了幾分涼意。  
+            就在轉角，一陣甜香穿過人群——  
+            那是剛起鍋的地瓜球，金黃、滾燙，像一顆顆小太陽，在油鍋裡輕輕跳動。
+          </p>
+          <p>
+            我忍不住停下腳步，看著油光翻滾、聽著細碎的滋滋聲。  
+            他站在鍋前，動作穩定而沉著，像在傾聽油溫的呼吸；  
+            每一次翻動，都凝著長年的累積與手感。
+          </p>
+          <p>
+            他總會把第一次起鍋的地瓜球留給自己，  
+            不是為了試味道，而是為了確認——  
+            「今天的手感，依舊沒變。」
+          </p>
+          <p>
+            那一瞬間，我忽然明白，  
+            這香氣，不只是味道，而是一種信念。
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================= 02 ================= -->
+    <article class="story-block" aria-labelledby="s02">
+      <div class="story-inner">
+        <div class="story-img-col">
+          <div class="story-img-wrap">
+            <img src="qqball_story_02.png" alt="職人雙手用力搓揉地瓜粉糰的畫面">
+          </div>
+        </div>
+        <div class="story-text-col story-text">
+          <div class="story-eyebrow">02｜不只是地瓜球</div>
+          <h3 id="s02" class="story-heading">靈魂，不是機器做得出來的</h3>
+
+          <p>
+            「我不是在炸地瓜球，我是在讓它變成幸福。」他笑著說。
+          </p>
+          <p>
+            每天清晨，他挑地瓜、削皮、切塊，  
+            用手去感受濕度、纖維與甜度。  
+            粉糰也堅持用手揉——  
+            「機器做得快，但味道會少了點靈魂。」他說。
+          </p>
+          <p>
+            每一次按壓，都在確認彈性；  
+            每一次下鍋，都聽著油泡從急促轉為溫和——  
+            那是地瓜球「準備好了」的訊號。
+          </p>
+          <p>
+            在他眼裡，這不是點心，  
+            而是一份每天必須做到「問心無愧」的用心。
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================= 03 ================= -->
+    <article class="story-block" aria-labelledby="s03">
+      <div class="story-inner">
+        <div class="story-img-col">
+          <div class="story-img-wrap">
+            <img src="qqball_story_03.png" alt="職人雙手握著濾網，細心翻動油鍋裡的地瓜球">
+          </div>
+        </div>
+        <div class="story-text-col story-text">
+          <div class="story-eyebrow">03｜手的溫度</div>
+          <h3 id="s03" class="story-heading">藏在指尖的細節，是職人的語言</h3>
+
+          <p>
+            他的手粗糙卻穩定，  
+            像記住了時間、油溫、粉糰的性子。
+          </p>
+          <p>
+            翻動、提起、放下——  
+            每個動作都沉著、不急不躁，  
+            像在照顧某件重要的事情。
+          </p>
+          <p>
+            「手能感覺到機器感覺不到的細節。」他說。  
+            粉糰回彈的弧度、油泡變緩的瞬間、  
+            溫度剛剛好的那一刻——都藏在他的指尖裡。
+          </p>
+          <p>
+            那一刻，我忽然覺得世界慢了下來。  
+            那，是屬於職人的語言。
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================= 04 ================= -->
+    <article class="story-block" aria-labelledby="s04">
+      <div class="story-inner">
+        <div class="story-img-col">
+          <div class="story-img-wrap">
+            <img src="qqball_story_04.png" alt="夜色裡的小攤車，職人站在鍋邊的背影">
+          </div>
+        </div>
+        <div class="story-text-col story-text">
+          <div class="story-eyebrow">04｜夜色裡的攤車</div>
+          <h3 id="s04" class="story-heading">那盞燈泡照亮的，不只是一條街</h3>
+
+          <p>
+            夜色漸深，街邊的風略帶寒意。  
+            鍋裡的油仍然穩穩地沸騰著，攤車前的燈泡發出微暖的光。
+          </p>
+          <p>
+            他守在鍋邊，一鍋又一鍋，  
+            像是在和這條街一起值班。
+          </p>
+          <p>
+            有人說他太固執，他只是笑笑地說：  
+            「這樣，才像是我啊。」
+          </p>
+          <p>
+            那一刻，我忽然懂了——  
+            職人的溫度，不在火候，而在用心。
+          </p>
+          <p>
+            油光晃動，照亮了他的側臉，  
+            也在某個不經意的瞬間，照進了我的心裡。
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================= 05 ================= -->
+    <article class="story-block" aria-labelledby="s05">
+      <div class="story-inner">
+        <div class="story-img-col">
+          <div class="story-img-wrap">
+            <img src="qqball_story_05.png" alt="一袋裝滿金黃地瓜球的牛皮紙袋，被暖光照亮">
+          </div>
+        </div>
+        <div class="story-text-col story-text">
+          <div class="story-eyebrow">05｜那一顆記憶裡的香氣</div>
+          <h3 id="s05" class="story-heading">有些味道，是記憶在發光</h3>
+
+          <p>
+            熱騰騰的地瓜球被裝進牛皮紙袋，  
+            暖氣蒸騰，我接過的瞬間，手也跟著一起暖和了起來。
+          </p>
+          <p>
+            那香氣在夜裡飄散，  
+            那溫度在記憶裡停留。
+          </p>
+          <p>
+            吃著那袋地瓜球時，我忽然覺得——  
+            最美的日常，往往是被微小的用心堆起來的。
+          </p>
+          <p>
+            這份甜，不只是味道，  
+            而是一個人做事的方式。  
+            有些味道，不是被吃進去的，而是被記住的。
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================= Extra（精品畫冊式） ================= -->
+    <section class="extra-section" aria-labelledby="extra">
+      <div class="extra-shell card">
+        <div class="extra-header">
+          <h2 id="extra" class="section-title">
+            Extra｜那些藏在細節裡的溫度
+            <span class="section-title-badge">CLOSE–UP</span>
+          </h2>
+          <p>
+            有些溫度，只有「足夠靠近」時才能被感覺到。  
+            而那些看不見的用心——往往是手作裡最珍貴的地方。
+          </p>
+          <p>
+            或許，這些不起眼的小瞬間，就是職人最動人的語言。<br>
+            這裡放著幾張更貼近的視角，讓你更貼近這份手作裡最真實的溫度，與每一份甜背後那最細微的堅持。
+          </p>
+          <p class="extra-header-sub">SLIDE TO LOOK CLOSER</p>
+        </div>
+
+        <div class="extra-slider-card">
+          <div class="extra-slider" data-extra-slider>
+
+            <div class="extra-slides">
+              <!-- slide 1 -->
+              <article class="extra-slide active">
+                <div class="extra-img">
+                  <img src="qqball_extra_01.png" alt="油鍋特寫，金黃地瓜球在油面上鼓起翻動">
+                </div>
+                <div class="extra-text">
+                  <div class="extra-label">❶ 油光的跳動｜亮起來的，是甜的開始</div>
+                  <p class="extra-caption">
+                    蒸氣升起的亮度、油花跳起的瞬間——  
+                    那是地瓜球「開始呼吸」的時刻。<br>
+                    甜味從這裡醒來，也從這裡被照亮。
+                  </p>
+                </div>
+              </article>
+
+              <!-- slide 2 -->
+              <article class="extra-slide">
+                <div class="extra-img">
+                  <img src="qqball_extra_02.png" alt="職人的手揉著粉糰，粉糰在掌心逐漸變圓">
+                </div>
+                <div class="extra-text">
+                  <div class="extra-label">❷ 粉糰的成形｜手裡的溫度，比配方重要</div>
+                  <p class="extra-caption">
+                    粉糰在掌心裡變圓、變軟、變得有彈性。  
+                    那份只有手能感覺到的細節，<br>
+                    是機器永遠複製不來的溫柔。
+                  </p>
+                </div>
+              </article>
+
+              <!-- slide 3 -->
+              <article class="extra-slide">
+                <div class="extra-img">
+                  <img src="qqball_extra_03.png" alt="夜色背景下，油鍋與金黃地瓜球發出微光">
+                </div>
+                <div class="extra-text">
+                  <div class="extra-label">❸ 手的語言｜藏在指尖的耐心與節奏</div>
+                  <p class="extra-caption">
+                    指尖沿著油花的節奏移動，<br>
+                    力道時輕時重、角度恰到好處——<br>
+                    就像在與油溫對話。<br>
+                    地瓜球之所以能炸得澎圓、Q 彈，<br>
+                    是因為這雙手始終記得它們該有的樣子。
+                  </p>
+                </div>
+              </article>
+
+              <!-- slide 4 -->
+              <article class="extra-slide">
+                <div class="extra-img">
+                  <img src="qqball_extra_04.png" alt="夜裡的小攤車，燈光與蒸氣在風中交疊">
+                </div>
+                <div class="extra-text">
+                  <div class="extra-label">❹ 夜色裡的攤車｜風裡、光裡、他的身影</div>
+                  <p class="extra-caption">
+                    夜氣慢慢散開，燈泡的光暈在風裡搖晃。  
+                    鍋前的身影不曾動搖——<br>
+                    那是一種留給城市的安靜溫柔，  
+                    也是職人和自己對話的方式。
+                  </p>
+                </div>
+              </article>
+
+              <!-- slide 5 -->
+              <article class="extra-slide">
+                <div class="extra-img">
+                  <img src="qqball_extra_05.png" alt="雙手捧著一袋QQ球，紙袋被暖光照亮">
+                </div>
+                <div class="extra-text">
+                  <div class="extra-label">❺ 那一袋剛剛好的甜｜在心裡停留的瞬間</div>
+                  <p class="extra-caption">
+                    紙袋被暖光照亮的瞬間，甜味輕輕湧上來。  
+                    有些甜，不在嘴裡，而是在心裡被記住。<br>
+                    這袋剛剛好的溫度，  
+                    是一整天用心的結尾。
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <!-- arrows -->
+            <div class="extra-arrows">
+              <button class="extra-nav prev" type="button" aria-label="上一張" data-extra-prev>
+                <span>‹</span>
+              </button>
+              <button class="extra-nav next" type="button" aria-label="下一張" data-extra-next>
+                <span>›</span>
+              </button>
+            </div>
+            <div class="extra-arrow-hint">
+              <span>← 上一張 / 下一張 →</span>
+            </div>
+
+            <!-- footer -->
+            <div class="extra-footer">
+              <div class="extra-counter">
+                <span>SLIDE</span>
+                <span class="extra-counter-current" data-extra-current>01</span>
+                <span class="extra-counter-total">/ 05</span>
+              </div>
+              <div class="extra-dots" data-extra-dots>
+                <button class="extra-dot active" type="button"></button>
+                <button class="extra-dot" type="button"></button>
+                <button class="extra-dot" type="button"></button>
+                <button class="extra-dot" type="button"></button>
+                <button class="extra-dot" type="button"></button>
+              </div>
+              <div class="extra-meta-tag">HANDMADE · DETAIL</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 幕後手記 ================= -->
+    <section class="card note-section" aria-labelledby="note">
+      <h2 id="note" class="section-title">
+        🎬 幕後手記
+        <span class="section-title-badge">AFTER NOTE</span>
+      </h2>
+
+      <p>
+        這個作品獻給所有把「平凡的事」做到不平凡的人。  
+        那些反覆的步驟、那些不假手於機器的堅持，  
+        都是這個世界最微小卻最珍貴的溫度。
+      </p>
+      <p>
+        願您在閱讀的過程裡，  
+        也能想起某個曾讓你感動的人——  
+        或是想起，那個曾經把一件小事做到極致的自己。
+      </p>
+    </section>
+
+    <!-- ================= 分享區 ================= -->
+    <section class="share-section" aria-labelledby="share">
+      <div class="card">
+        <h2 id="share" class="share-heading">
+          🌿 溫度與香氣，如果能被分享
+          <span class="share-heading-sub">—— 會更暖更甜。</span>
+        </h2>
+
+        <p class="share-lead-top">
+          ～ 有些溫度，只能用心感受 ～<br>
+          ＱＱ球職人手作，記錄剛剛好的甜。
+        </p>
+
+        <p class="share-lead-mid">
+          📱 想把這份暖意分享給誰嗎？<br>
+          用下方的按鈕傳遞出去吧！
+        </p>
+
+        <div class="share-buttons">
+
+          <!-- LINE -->
+          <a
+            class="share-btn"
+            href="https://line.me/R/msg/text/?%E4%B8%80%E8%A2%8B%E5%89%9B%E8%B5%B7%E9%8D%8B%E7%9A%84%E7%94%9C%EF%BC%8C%E4%B8%80%E6%AE%B5%E9%97%9C%E6%96%BC%E6%89%8B%E4%BD%9C%E7%9A%84%E6%BA%AB%E5%BA%A6%E3%80%82%0A%E9%80%99%E6%98%AF%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E5%80%8B%E7%B6%B2%E9%A0%81%E4%BD%9C%E5%93%81%20%E2%80%94%E2%80%94%20%E9%82%80%E6%82%A8%E4%B8%80%E8%B5%B7%E7%9C%8B%E7%9C%8B%E3%80%82%0A👉%20https%3A%2F%2Fq-qball.vercel.app%2F"
+            target="_blank"
+          >
+            <div class="share-icon share-icon--line">
+              <span class="share-icon-text">LINE</span>
+            </div>
+            <div class="share-label">LINE</div>
+          </a>
+
+          <!-- FB -->
+          <a
+            class="share-btn"
+            href="https://www.facebook.com/sharer/sharer.php?u=https://q-qball.vercel.app/"
+            target="_blank"
+          >
+            <div class="share-icon share-icon--fb">
+              <span class="share-icon-text">f</span>
+            </div>
+            <div class="share-label">FACEBOOK</div>
+          </a>
+
+          <!-- Threads -->
+          <a
+            class="share-btn"
+            href="https://www.threads.net/intent/post?text=%E4%B8%80%E8%A2%8B%E5%89%9B%E8%B5%B7%E9%8D%8B%E7%9A%84%E7%94%9C%EF%BC%8C%E4%B8%80%E6%AE%B5%E9%97%9C%E6%96%BC%E6%89%8B%E4%BD%9C%E7%9A%84%E6%BA%AB%E5%BA%A6%E3%80%82%0A%E9%80%99%E6%98%AF%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E5%80%8B%E7%B6%B2%E9%A0%81%E4%BD%9C%E5%93%81%EF%BC%8C%E9%82%80%E6%82%A8%E4%B8%80%E8%B5%B7%E7%9C%8B%E7%9C%8B%E3%80%82%0A👉%20https%3A%2F%2Fq-qball.vercel.app%2F"
+            target="_blank"
+          >
+            <div class="share-icon share-icon--threads">
+              <span class="share-icon-text">@</span>
+            </div>
+            <div class="share-label">THREADS</div>
+          </a>
+        </div>
+
+        <p class="share-note">
+          分享，是一種溫度，<br>讓香氣延續，也讓故事被記住。
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="credit-main">
+      © 2025 <span>HSUAN~</span> × <span>ChatGPT（with GPT-5.1）</span>
+    </div>
+    <div class="slogan">
+      <span class="slogan-icon" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path fill="#5A3A1C" d="M9.3 15.2c-1.9 0-3.3-1.4-3.3-3.5 0-2 1.4-3.6 3.4-3.6 1.4 0 2.4.7 3.1 1.7.7-1 1.7-1.7 3.1-1.7 2 0 3.4 1.6 3.4 3.6 0 2.1-1.4 3.5-3.3 3.5h-.3l-2.9 3-2.9-3h-.3z"/><path fill="#5A3A1C" d="M7.5 17.3c.5-.5 1.3-.5 1.8 0l3.2 3.4c.5.5 1.1.8 1.8.8s1.3-.3 1.8-.8l3.2-3.4c.5-.5 1.3-.5 1.8 0 .5.5.5 1.3 0 1.8l-3.3 3.5c-.9 1-2.1 1.6-3.5 1.6s-2.6-.6-3.5-1.6l-3.3-3.5c-.5-.5-.5-1.3 0-1.8z"/></svg>
+      </span>
+      <span class="slogan-text">用手溫，做出心的味道。</span>
+    </div>
+
+    <div class="links">
+      📷 Instagram：<a href="https://instagram.com/hsuan9456" target="_blank">@hsuan9456</a><br>
+      💬 Threads：<a href="https://www.threads.net/@hsuan9456" target="_blank">@hsuan9456</a><br>
+      🌐 Facebook：<a href="https://www.facebook.com/gu.rui.si" target="_blank">facebook.com/gu.rui.si</a>
+    </div>
+  </footer>
+
+  <!-- Extra Zoom Overlay -->
+  <div class="zoom-overlay" data-zoom-overlay>
+    <div class="zoom-inner">
+      <div class="zoom-header">
+        <div class="zoom-title">DETAIL VIEW</div>
+        <button class="zoom-close" type="button" aria-label="關閉放大檢視" data-zoom-close>×</button>
+      </div>
+      <div class="zoom-stage">
+        <img src="" alt="" data-zoom-img>
+      </div>
+      <div class="zoom-controls">
+        <div class="zoom-controls-group">
+          <span class="zoom-label">ZOOM</span>
+          <button class="zoom-btn" type="button" data-zoom-out><span>−</span></button>
+          <button class="zoom-btn" type="button" data-zoom-in><span>+</span></button>
+        </div>
+        <div class="zoom-controls-group">
+          <span class="zoom-label">MOVE</span>
+          <button class="zoom-btn" type="button" data-zoom-up><span>↑</span></button>
+          <button class="zoom-btn" type="button" data-zoom-left><span>←</span></button>
+          <button class="zoom-btn" type="button" data-zoom-right><span>→</span></button>
+          <button class="zoom-btn" type="button" data-zoom-down><span>↓</span></button>
+        </div>
+        <div class="zoom-controls-group zoom-bright">
+          <span class="zoom-label">BRIGHT</span>
+          <input type="range" min="0.7" max="1.5" step="0.02" value="1" data-zoom-bright>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Extra slider
+    (function(){
+      const slider = document.querySelector('[data-extra-slider]');
+      if(!slider) return;
+
+      const slides = [...slider.querySelectorAll('.extra-slide')];
+      const dots = [...slider.querySelectorAll('.extra-dot')];
+      const prev = slider.querySelector('[data-extra-prev]');
+      const next = slider.querySelector('[data-extra-next]');
+      const current = slider.querySelector('[data-extra-current]');
+      let index = 0;
+
+      function format(i){ return (i+1).toString().padStart(2,'0'); }
+
+      function show(i){
+        index = (i + slides.length) % slides.length;
+        slides.forEach((s,idx)=>s.classList.toggle('active', idx===index));
+        dots.forEach((d,idx)=>d.classList.toggle('active', idx===index));
+        if(current) current.textContent = format(index);
+      }
+
+      if(prev) prev.onclick = ()=>show(index-1);
+      if(next) next.onclick = ()=>show(index+1);
+      dots.forEach((dot,idx)=>dot.onclick=()=>show(idx));
+
+      show(0);
+    })();
+
+    // Extra Zoom viewer
+    (function(){
+      const overlay = document.querySelector('[data-zoom-overlay]');
+      if(!overlay) return;
+
+      const imgEl = overlay.querySelector('[data-zoom-img]');
+      const btnClose = overlay.querySelector('[data-zoom-close]');
+      const btnIn = overlay.querySelector('[data-zoom-in]');
+      const btnOut = overlay.querySelector('[data-zoom-out]');
+      const btnUp = overlay.querySelector('[data-zoom-up]');
+      const btnDown = overlay.querySelector('[data-zoom-down]');
+      const btnLeft = overlay.querySelector('[data-zoom-left]');
+      const btnRight = overlay.querySelector('[data-zoom-right]');
+      const brightRange = overlay.querySelector('[data-zoom-bright]');
+      const STEP_MOVE = 40;
+
+      let scale = 1;
+      let offsetX = 0;
+      let offsetY = 0;
+      let bright = 1;
+
+      function apply(){
+        imgEl.style.transform =
+          'translate(calc(-50% + ' + offsetX + 'px), calc(-50% + ' + offsetY + 'px)) scale(' + scale + ')';
+        imgEl.style.filter = 'brightness(' + bright + ')';
+      }
+
+      function open(src, alt){
+        scale = 1;
+        offsetX = 0;
+        offsetY = 0;
+        bright = 1;
+        imgEl.src = src;
+        imgEl.alt = alt || '';
+        if(brightRange) brightRange.value = 1;
+        apply();
+        overlay.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function close(){
+        overlay.classList.remove('is-active');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.extra-img img').forEach(img=>{
+        img.addEventListener('click',()=>{
+          open(img.src, img.alt);
+        });
+      });
+
+      if(btnClose) btnClose.addEventListener('click', close);
+      overlay.addEventListener('click', e=>{
+        if(e.target === overlay) close();
+      });
+
+      if(btnIn) btnIn.addEventListener('click', ()=>{
+        scale = Math.min(scale + 0.25, 3);
+        apply();
+      });
+
+      if(btnOut) btnOut.addEventListener('click', ()=>{
+        scale = Math.max(scale - 0.25, 0.6);
+        apply();
+      });
+
+      if(btnUp) btnUp.addEventListener('click', ()=>{
+        offsetY -= STEP_MOVE;
+        apply();
+      });
+      if(btnDown) btnDown.addEventListener('click', ()=>{
+        offsetY += STEP_MOVE;
+        apply();
+      });
+      if(btnLeft) btnLeft.addEventListener('click', ()=>{
+        offsetX -= STEP_MOVE;
+        apply();
+      });
+      if(btnRight) btnRight.addEventListener('click', ()=>{
+        offsetX += STEP_MOVE;
+        apply();
+      });
+
+      if(brightRange) brightRange.addEventListener('input', ()=>{
+        bright = parseFloat(brightRange.value) || 1;
+        apply();
+      });
+
+      window.addEventListener('keydown', e=>{
+        if(e.key === 'Escape') close();
+      });
+    })();
+  </script>
+
+</body>
+</html>
