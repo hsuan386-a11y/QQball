@@ -601,21 +601,38 @@
     /* iPad 直式（768～1023px）：再往上拉一些特寫 */
 @media (min-width: 768px) and (max-width: 1023.98px) {
   :root {
-    --extra1-scale: 1.1;
-    --extra1-pos-y: 37%;
+  /* Extra ❶～❺：預設先當作手機版的數值（>=768 會被後面的 media 覆寫） */
+  /* scale：放大倍率；pos-x / pos-y：構圖位置；brightness：亮度 */
 
-    --extra2-scale: 1.06;
-    --extra2-pos-y: 42%;
+  /* Slide 1：聚焦油光 + 地瓜球 */
+  --extra1-scale: 1.08;
+  --extra1-pos-x: 50%;
+  --extra1-pos-y: 40%;
+  --extra1-brightness: 0.95;  /* 稍微壓一點亮度，避免過曝 */
 
-    --extra3-scale: 1.08;
-    --extra3-pos-y: 40%;
+  /* Slide 2：完整雙手 + 粉糰 + 桌面粉末 */
+  --extra2-scale: 1.03;
+  --extra2-pos-x: 50%;
+  --extra2-pos-y: 44%;
+  --extra2-brightness: 1.0;
 
-    --extra4-scale: 0.98;
-    --extra4-pos-y: 54%;
+  /* Slide 3：手 +油勺+鍋邊 + 部分地瓜球 */
+  --extra3-scale: 1.06;
+  --extra3-pos-x: 48%;
+  --extra3-pos-y: 42%;
+  --extra3-brightness: 0.95;  /* 這張你覺得偏亮，也稍微壓一點 */
 
-    --extra5-scale: 1.06;
-    --extra5-pos-y: 43%;
-  }
+  /* Slide 4：要看到燈光 + 背影 + 整台攤車 */
+  --extra4-scale: 0.97;       /* 稍微縮小一點，好讓整台攤車入鏡 */
+  --extra4-pos-x: 50%;
+  --extra4-pos-y: 52%;
+  --extra4-brightness: 1.0;
+
+  /* Slide 5：袋子 + 地瓜球 + 雙手，畫面上緣留一點燈光 */
+  --extra5-scale: 1.04;
+  --extra5-pos-x: 50%;
+  --extra5-pos-y: 45%;
+  --extra5-brightness: 0.97;
 }
 
 /* iPad 橫式 / 桌機（>=1024px）：你 Extra 區主要看的尺寸 */
