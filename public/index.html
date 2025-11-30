@@ -1080,59 +1080,62 @@
 }
 
 /* iPad 直向：Extra 圖片稍微放大，集中在特寫視角 */
-@media (min-width: 768px) && (max-width: 1024px) and (orientation: portrait) {
-  .extra-slider-card {
-    max-width: 720px;
-    margin-inline: auto;
+@media (min-width:768px) and (max-width:1024px) and (orientation:portrait){
+  .extra-shell{
+    grid-template-columns:1fr;
+  }
+  .extra-slider-card{
+    padding:1.6rem 1.3rem 1.9rem;
+  }
+  .extra-img{
+    max-height:400px;
+    margin:0 auto;
   }
 
-  .extra-img img {
+  /* iPad 直向：Extra 圖片改成較居中的特寫，不要只看到煙或邊角 */
+  .extra-slide .extra-img img{
+    object-position: center 50%;
     transform: scale(1.02);
   }
 }
 
-/* 手機版 Extra：圖片重新對焦 + SLIDE / dots / HANDMADE 置中排版 */
+/* 手機版調整 */
 @media (max-width: 600px) {
-  /* footer 排版改為置中、上下堆疊 */
+  /* Extra footer 置中 */
   .extra-footer {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
+    justify-content: center !important;
     text-align: center;
   }
 
-  .extra-footer .extra-counter {
-    order: 1;
+  .extra-tag {
+    margin: 0 auto;
   }
 
-  .extra-footer .extra-dots {
-    order: 2;
+  /* 手機版 Extra：每一張圖的聚焦位置微調 */
+
+  /* ❶ 油鍋：畫面略往上移一點，多露出鍋子與油面 */
+  .extra-slide:nth-of-type(1) .extra-img img{
+    object-position: center 35%;
   }
 
-  .extra-footer .extra-meta-tag {
-    order: 3;
+  /* ❷ 粉糰：往上移更多，能看到完整手指＋粉糰＋桌面散粉 */
+  .extra-slide:nth-of-type(2) .extra-img img{
+    object-position: center 72%;
   }
 
-  /* 手機版 Extra 圖片：逐張重新對焦（往上移一點） */
-  .extra-slide:nth-of-type(1) .extra-img img { /* 蒸氣＋整鍋 */
-    object-position: center 45%;
-  }
-
-  .extra-slide:nth-of-type(2) .extra-img img { /* 手＋粉糰＋散粉 */
-    object-position: center 80%;
-  }
-
-  .extra-slide:nth-of-type(3) .extra-img img { /* 手＋油鍋特寫 */
-    object-position: center 70%;
-  }
-
-  .extra-slide:nth-of-type(4) .extra-img img { /* 整台攤車 */
+  /* ❸ 手的語言：往上移一點，多露出鍋邊與地瓜球 */
+  .extra-slide:nth-of-type(3) .extra-img img{
     object-position: center 60%;
   }
 
-  .extra-slide:nth-of-type(5) .extra-img img { /* 紙袋＋雙手＋光點 */
-    object-position: center 70%;
+  /* ❹ 攤車：聚焦再往上，盡量看到整台攤車 */
+  .extra-slide:nth-of-type(4) .extra-img img{
+    object-position: center 48%;
+  }
+
+  /* ❺ 紙袋：往上移一點，紙袋 + 手 + 地瓜球更完整 */
+  .extra-slide:nth-of-type(5) .extra-img img{
+    object-position: center 64%;
   }
 }
   </style>
