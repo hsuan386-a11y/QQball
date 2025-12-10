@@ -16,9 +16,10 @@
   <meta property="og:url" content="https://q-qball.vercel.app/">
   <meta property="og:title" content="ＱＱ球職人手作｜甜的剛好，心的溫度。">
   <meta property="og:description" content="夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。">
-  <!-- 統一社群分享圖：採用紙袋 QQ 球特寫 -->
+  <!-- 統一社群分享圖：確認設定為 qqball_extra_05.png -->
   <meta property="og:image" content="https://q-qball.vercel.app/qqball_extra_05.png">
   <meta property="og:image:secure_url" content="https://q-qball.vercel.app/qqball_extra_05.png">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:alt" content="雙手捧著一袋熱騰騰QQ球的畫面">
 
   <!-- Twitter -->
@@ -27,7 +28,7 @@
   <meta name="twitter:description" content="夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。">
   <meta name="twitter:image" content="https://q-qball.vercel.app/qqball_extra_05.png">
 
-  <!-- Preload Hero -->
+  <!-- Preload Hero (關鍵首屏資源預先加載) -->
   <link rel="preload" as="image" href="qqball_hero_main.png">
   <link rel="preload" as="image" href="qqball_hero_2.png">
 
@@ -49,12 +50,16 @@
     *{box-sizing:border-box;margin:0;padding:0;}
     img{max-width:100%;display:block;}
 
+    /* 優化：平滑滾動 */
+    html {
+      scroll-behavior: smooth;
+    }
+
     body{
       font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
       background:radial-gradient(circle at top,#F9F0E4 0,#F3E8D8 45%,#E8D8C4 100%);
       color:var(--ink);
       line-height:1.9;
-      /* 基準回到正常，改由內文與小標放大，老花友好 */
       font-size:clamp(18px,2.4vw,20px);
       -webkit-font-smoothing:antialiased;
     }
@@ -94,7 +99,7 @@
       }
     }
 
-    /* ================= HERO ================= */
+    /* ================= HERO (視覺強化版) ================= */
 
     .hero{
       position:relative;
@@ -118,66 +123,63 @@
       width:100%;
       height:auto;
       display:block;
-      /* 使用品牌統一濾鏡，搭配下方光效層 */
-      filter:var(--qq-image-filter);
+      /*
+         🔥🔥🔥 封面視覺張力核心 🔥🔥🔥
+         1. Contrast 1.2: 拉開明暗，讓燈光更亮，陰影更深，製造電影感
+         2. Saturate 1.15: 強化暖色調的飽和度，讓畫面更濃郁
+         3. Brightness 0.92: 稍微壓暗基底，讓後續疊加的光效更突出
+      */
+      filter: contrast(1.2) saturate(1.15) brightness(0.92);
       transform:scale(1.02);
       transform-origin:center;
     }
 
-    /* 油鍋暖光（下半部油光） — 收斂版 */
+    /* 第一層：電影感暗角 (Focus)
+       讓視線自然聚焦在職人與攤車中央，四周壓暗
+    */
     .hero-media::before{
       content:"";
       position:absolute;
-      left:50%;
-      top:72%;
-      transform:translateX(-50%);
-      width:78%;
-      height:46%;
-      background:
-        radial-gradient(circle at 50% 8%,
-          rgba(255,215,150,.55) 0%,
-          rgba(255,190,120,.30) 32%,
-          rgba(0,0,0,0) 78%);
+      inset:0;
+      z-index:2;
+      background: radial-gradient(
+        circle at 50% 45%, /* 焦點略偏上方人臉/手部位置 */
+        transparent 10%,
+        rgba(0,0,0,0.2) 50%,
+        rgba(0,0,0,0.7) 95%
+      );
+      mix-blend-mode: multiply;
       pointer-events:none;
-      mix-blend-mode:screen;
     }
 
-    /* 上層漸層 + 煙霧感 — 收斂版，避免上下色差過重 */
+    /* 第二層：雙重氛圍光 (Dual Lighting)
+       模擬上方燈光與下方油鍋熱氣的混合光暈
+    */
     .hero-media::after{
       content:"";
       position:absolute;
       inset:0;
+      z-index:3;
       background:
-        radial-gradient(circle at 30% 0%,
-          rgba(255,255,255,.18) 0%,
-          rgba(255,255,255,0) 45%),
-        radial-gradient(circle at 78% -10%,
-          rgba(255,240,220,.26) 0%,
-          rgba(0,0,0,0) 55%),
-        linear-gradient(
-          to bottom,
-          rgba(0,0,0,0.12) 0%,
-          rgba(0,0,0,0.32) 46%,
-          rgba(0,0,0,0.58) 100%
-        );
+        /* 上方光源：燈泡的暖黃光暈 (Top Left) */
+        radial-gradient(circle at 25% 15%, rgba(255, 220, 150, 0.4) 0%, transparent 65%),
+        /* 下方光源：油鍋反射的金橙色光澤 (Bottom Center) */
+        radial-gradient(circle at 50% 85%, rgba(255, 140, 50, 0.3) 0%, transparent 55%);
+      mix-blend-mode: soft-light; /* 柔光模式讓光暈自然融入 */
       pointer-events:none;
-      mix-blend-mode:soft-light;
     }
 
-    /* 浮動煙氣層（柔霧條帶） */
+    /* 第三層：煙霧紋理 (Texture) */
     .hero-smoke{
       pointer-events:none;
       position:absolute;
       inset:0;
+      z-index:4;
       background:
-        radial-gradient(circle at 20% 10%,
-          rgba(255,255,255,.06) 0,
-          transparent 45%),
-        radial-gradient(circle at 75% 15%,
-          rgba(255,255,255,.10) 0,
-          transparent 58%);
-      mix-blend-mode:screen;
-      opacity:.9;
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,.08) 0, transparent 45%),
+        radial-gradient(circle at 75% 15%, rgba(255,255,255,.12) 0, transparent 58%);
+      mix-blend-mode: overlay; /* 使用 Overlay 讓煙霧更有層次感 */
+      opacity: 0.7;
     }
 
     .hero-text{
@@ -193,9 +195,10 @@
       display:flex;
       flex-direction:column;
       gap:.3rem;
+      z-index: 5; /* 確保文字在所有光效之上 */
     }
 
-    /* HERO capsule：留白收斂版 */
+    /* HERO capsule */
     .hero-tag{
       display:inline-flex;
       align-items:center;
@@ -224,11 +227,13 @@
       box-shadow:0 0 0 2px rgba(255,255,255,.65);
     }
 
-    .hero-title{
+    /* 優化：將 .hero-title 轉為 h1 樣式，保持視覺一致但語意正確 */
+    h1.hero-title{
       font-size:clamp(2.6rem,4.1vw,3.2rem);
       font-weight:800;
       letter-spacing:.1em;
       margin-bottom:.12rem;
+      line-height: 1.2;
     }
 
     .hero-sub{
@@ -260,7 +265,7 @@
         font-size:.78rem;
         padding:.24rem .8rem;
       }
-      .hero-title{
+      h1.hero-title{
         font-size:2.2rem;
       }
       .hero-sub{
@@ -280,7 +285,7 @@
         font-size:.76rem;
         padding:.2rem .78rem;
       }
-      .hero-title{
+      h1.hero-title{
         font-size:2rem;
       }
       .hero-sub{
@@ -347,8 +352,7 @@
       letter-spacing:.14em;
     }
 
-    /* Extra 標題：兩行排版（左對齊） */
-
+    /* Extra 標題：兩行排版 */
     .extra-header .section-title{
       flex-direction:column;
       align-items:flex-start;
@@ -454,39 +458,49 @@
       isolation:isolate;
     }
 
-    .story-img-wrap::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 50% 12%,
-          rgba(255,218,150,.30) 0,
-          transparent 58%),
-        linear-gradient(to bottom,
-          rgba(0,0,0,0) 0%,
-          rgba(0,0,0,.26) 100%);
-      mix-blend-mode:soft-light;
-      pointer-events:none;
+    /*
+      優化：Story 區的基礎油亮與氛圍設定
+    */
+    .story-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      /* 基礎濾鏡：提高對比與飽和 */
+      filter: contrast(1.15) saturate(1.1) sepia(0.15) brightness(0.95);
+      transform: scale(1.01);
+      transform-origin: center;
+      position: relative;
+      z-index: 1;
     }
 
-    .story-img-wrap::after{
-      content:"";
-      position:absolute;
-      inset:-6%;
-      border-radius:inherit;
-      border:1px solid rgba(255,255,255,.16);
-      mix-blend-mode:screen;
-      pointer-events:none;
+    /* Story 區的光影 */
+    .story-img-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: radial-gradient(
+        circle at center,
+        transparent 30%, 
+        rgba(40, 20, 5, 0.4) 85%, 
+        rgba(20, 10, 0, 0.7) 100% 
+      );
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      border-radius: inherit;
     }
 
-    .story-img-wrap img{
-      width:100%;
-      height:auto;
-      display:block;
-      /* 與 Hero / Extra 共用同一品牌濾鏡 */
-      filter:var(--qq-image-filter);
-      transform:scale(1.01);
-      transform-origin:center;
+    /* Story 區的油光 */
+    .story-img-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      background: rgba(255, 230, 180, 0.15);
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+      border-radius: inherit;
+      box-shadow: inset 0 0 20px rgba(255, 200, 100, 0.1);
     }
 
     .story-text p{
@@ -571,6 +585,8 @@
       display:flex;
       flex-direction:column;
       gap:1rem;
+      /* 優化：防止觸控時的默認行為（如滾動），確保滑動流暢 */
+      touch-action: pan-y; 
     }
 
     .extra-slides{
@@ -578,8 +594,15 @@
       width:100%;
     }
 
+    /* 動畫效果：加入淡入淡出 */
     .extra-slide{
       display:none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .extra-slide.active{
@@ -600,28 +623,71 @@
       flex:0 0 auto;
     }
 
-    .extra-img img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center;
-      display:block;
-      /* 與 Hero / Story 共用同一品牌濾鏡 */
-      filter:var(--qq-image-filter);
-      transform:scale(1.05);
-      transform-origin:center;
+    /*
+      🔥🔥🔥 Extra 區域核心優化：拉近特寫 + 手作質感 🔥🔥🔥
+      這裡的設定比 Story 區更強烈，為了營造「微距特寫」的視覺衝擊
+    */
+    .extra-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* object-position 會在 mobile media query 進行微調 */
+      object-position: center;
+      display: block;
+      
+      /* 特寫強化濾鏡：
+        contrast(1.2) - 更高的對比，強調紋理
+        saturate(1.15) - 更濃郁的色彩，強調食材新鮮感
+        sepia(0.2) - 更重的懷舊感，呼應職人溫度
+        brightness(0.92) - 稍微壓暗，讓高光更跳
+      */
+      filter: contrast(1.2) saturate(1.15) sepia(0.2) brightness(0.92);
+      
+      /* 關鍵改變：Scale 放大至 1.35
+        這會裁切掉周圍的雜訊，強迫視線聚焦在手部動作與地瓜球的細節上
+        營造「拉近距離」的親密感
+      */
+      transform: scale(1.35);
+      transform-origin: center;
+      
+      position: relative;
+      z-index: 1;
+      transition: transform 8s ease; /* 加入極緩慢的移動效果增加生命力 */
     }
 
-    /* 氛圍光效層（收斂版） */
-    .extra-img::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(255,240,200,.30) 0%, transparent 65%),
-        radial-gradient(circle at 70% 80%, rgba(255,210,160,.20) 0%, transparent 65%);
-      mix-blend-mode:soft-light;
-      pointer-events:none;
+    /* Extra 區域的光影氛圍層 - 加重聚焦 */
+    .extra-img::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      /* 漸層範圍縮小 (transparent 25%)，讓暗角更往中心集中
+        創造強烈的「聚光燈」效果
+      */
+      background: radial-gradient(
+        circle at center,
+        transparent 25%,
+        rgba(50, 25, 5, 0.5) 80%,
+        rgba(30, 15, 0, 0.85) 100%
+      );
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    /* Extra 區域的油亮質感層 - 提亮高光 */
+    .extra-img::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      /* 使用更暖、更亮的覆蓋層
+        Soft-light 模式下，這會讓畫面中的亮部（油光、反光）呈現金黃色澤
+      */
+      background: rgba(255, 220, 150, 0.18);
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+      /* 增加內光暈，讓邊緣有些微過曝的夢幻感 */
+      box-shadow: inset 0 0 40px rgba(255, 180, 50, 0.15);
     }
 
     .extra-text{
@@ -644,8 +710,7 @@
       line-height:1.9;
     }
 
-    /* Extra footer：SLIDE / dots / HANDMADE 一行排列 */
-
+    /* Extra footer */
     .extra-footer{
       display:flex;
       align-items:center;
@@ -710,14 +775,15 @@
       white-space:nowrap;
     }
 
-    /* Extra arrows：改為下方一排，不再覆蓋文字或圖片 */
-
+    /* Extra arrows */
     .extra-arrows{
       display:flex;
       justify-content:center;
       align-items:center;
       gap:.75rem;
       margin-top:.5rem;
+      /* 優化：防止在手機上快速點擊時選中文字 */
+      user-select: none;
     }
 
     .extra-nav{
@@ -732,7 +798,7 @@
       justify-content:center;
       cursor:pointer;
       box-shadow:0 4px 10px rgba(0,0,0,.3);
-      transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+      transition:transform .1s ease,box-shadow .1s ease,background .18s ease;
     }
 
     .extra-nav span{
@@ -745,8 +811,12 @@
       box-shadow:0 6px 14px rgba(0,0,0,.4);
       background:rgba(55,40,28,1);
     }
-
-    /* 手機：整個 Extra 區塊盡量塞在一個畫面內，圖略裁切 */
+    
+    /* 優化：增加點擊回饋 */
+    .extra-nav:active{
+      transform:scale(0.95);
+      box-shadow:0 2px 5px rgba(0,0,0,.2);
+    }
 
     @media (max-width:480px){
       .extra-shell{
@@ -773,8 +843,6 @@
       }
     }
 
-    /* iPad 直向：Extra 單欄堆疊，圖放大置中，footer 一行 */
-
     @media (min-width:768px) and (max-width:1024px) and (orientation:portrait){
       .extra-shell{
         grid-template-columns:1fr;
@@ -787,8 +855,6 @@
         margin:0 auto;
       }
     }
-
-    /* 平板 / 桌機：左文右圖（header 左，slider 右）＋ slide 內為圖文並排 */
 
     @media (min-width:900px){
       .extra-shell{
@@ -812,8 +878,6 @@
       }
     }
 
-    /* iPad 橫向：額外放大行距與段落間距 */
-
     @media (min-width:1024px) and (orientation:landscape){
       .extra-header p{
         line-height:1.98;
@@ -825,225 +889,8 @@
       }
     }
 
-    /* ================= 幕後手記 ================= */
-
-    .note-section{
-      margin:0 auto 2.7rem;
-    }
-
-    .note-section .section-title{
-      padding-bottom:.4rem;
-    }
-
-    /* ================= 分享區 ================= */
-
-    .share-section{
-      text-align:center;
-      margin:0 auto 2rem;
-    }
-
-    .share-section .card{
-      max-width:720px;
-    }
-
-    .share-heading{
-      font-size:clamp(1.18rem,2.3vw,1.32rem);
-      font-weight:700;
-      color:#5A3A1C;
-      margin-bottom:.8rem;
-      line-height:1.7;
-    }
-
-    .share-heading-sub{
-      display:block;
-      font-size:1.04rem;
-      margin-top:.1rem;
-      color:#7A5634;
-      font-weight:500;
-      letter-spacing:.08em;
-    }
-
-    .share-lead-top{
-      font-size:clamp(1.08rem,2.1vw,1.18rem);
-      margin-bottom:.65rem;
-      font-style:italic;
-    }
-
-    .share-lead-mid{
-      font-size:clamp(1.08rem,2.1vw,1.18rem);
-      margin-top:.3rem;
-      font-weight:600;
-    }
-
-    .share-buttons{
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
-      gap:20px;
-      flex-wrap:wrap;
-      margin-top:1.35rem;
-    }
-
-    .share-btn{
-      text-decoration:none;
-      color:#fff;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:.45rem;
-    }
-
-    .share-icon{
-      width:68px;
-      height:68px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 4px 12px rgba(0,0,0,.22);
-      overflow:hidden;
-      background:#fff;
-      transition:transform .16s ease,box-shadow .16s ease;
-      font-weight:800;
-      letter-spacing:.08em;
-      font-size:.8rem;
-    }
-
-    .share-icon-text{
-      display:inline-block;
-    }
-
-    .share-icon--line{
-      background:#00C300; /* 綠底 */
-      color:#000;         /* 黑字 LINE */
-    }
-
-    .share-icon--fb{
-      background:#1877F2; /* 藍底 */
-      color:#fff;
-      font-size:1.4rem;
-      font-weight:900;
-    }
-
-    .share-icon--threads{
-      background:#000; /* 黑底 */
-      color:#fff;
-      font-size:1.4rem;
-      font-weight:900;
-    }
-
-    .share-label{
-      font-size:.85rem;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:#5A3A1C;
-      font-weight:700;
-    }
-
-    .share-btn:hover .share-icon{
-      transform:translateY(-1px) scale(1.03);
-      box-shadow:0 6px 16px rgba(0,0,0,.25);
-    }
-
-    .share-note{
-      margin-top:1.1rem;
-      font-size:1.02rem;
-      color:#6B4A30;
-      font-weight:500;
-      letter-spacing:.03em;
-    }
-
-    .share-note br{
-      display:none;
-    }
-
-    @media (max-width:768px){
-      .share-note br{
-        display:inline;
-      }
-    }
-
-    /* ================= 頁尾 ================= */
-
-    footer{
-      background:#E6D6C3;
-      border-top:1px solid #D7C7B4;
-      padding:1.6rem 1rem 2.3rem;
-      text-align:center;
-      font-size:1rem;
-      color:#5A3A1C;
-    }
-
-    footer .credit-main{
-      margin-bottom:.4rem;
-    }
-
-    footer .credit-main span{
-      font-weight:600;
-    }
-
-    .slogan{
-      margin-bottom:.9rem;
-      font-size:1.06rem;
-      font-weight:700;
-      letter-spacing:.04em;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:.4rem;
-    }
-
-    .slogan-icon{
-      display:inline-flex;
-      width:22px;
-      height:22px;
-    }
-
-    .slogan-icon svg{
-      width:100%;
-      height:100%;
-      display:block;
-    }
-
-    footer .links{
-      line-height:1.9;
-    }
-
-    footer a{
-      color:#5A3A1C;
-      text-decoration:underline;
-      text-decoration-thickness:1px;
-      text-underline-offset:2px;
-    }
-
-    /* iPad 橫向：封面圖與標題整體往上帶一點，讓一開站就看得到整鍋地瓜球 */
-    @media (min-width:1024px) and (max-width:1366px) and (orientation:landscape){
-      .hero-media picture,
-      .hero-media img{
-        transform:translateY(-5%) scale(1.02);
-        transform-origin:center center;
-      }
-
-      .hero-text{
-        top:56%;
-      }
-    }
-
-    /* iPad 直向：Extra 圖片稍微放大，集中在特寫視角 */
-    @media (min-width:768px) and (max-width:1024px) and (orientation:portrait){
-      .extra-slider-card{
-        max-width:720px;
-        margin-inline:auto;
-      }
-
-      .extra-img img{
-        transform:scale(1.02);
-      }
-    }
-
-    /* 手機版 Extra：圖片重新對焦 + SLIDE / dots / HANDMADE 置中排版 */
+    /* 手機版 Extra 圖片對焦微調 - 配合放大後的 Scale (1.35) 重新校準 */
     @media (max-width:600px){
-      /* footer 排版改為置中、上下堆疊 */
       .extra-footer{
         flex-direction:column;
         align-items:center;
@@ -1064,26 +911,37 @@
         order:3;
       }
 
-      /* 手機版 Extra 圖片：逐張重新對焦（往上移一點） */
-      .extra-slide:nth-of-type(1) .extra-img img{ /* 蒸氣＋整鍋 */
-        object-position:center 35%;
+      /* 因為圖片放大了 1.35 倍，這裡微調對焦位置，確保重點（手、球）在中心
+         Center 指令會抓取圖片正中心，對於特寫鏡頭通常是最安全的
+      */
+      .extra-slide:nth-of-type(1) .extra-img img{ /* 油鍋 */
+        object-position:center 40%;
       }
 
-      .extra-slide:nth-of-type(2) .extra-img img{ /* 手＋粉糰＋散粉 */
-        object-position:center 72%;
+      .extra-slide:nth-of-type(2) .extra-img img{ /* 揉麵 */
+        object-position:center 65%;
       }
 
-      .extra-slide:nth-of-type(3) .extra-img img{ /* 手＋油鍋特寫 */
+      .extra-slide:nth-of-type(3) .extra-img img{ /* 濾網 */
+        object-position:center 55%;
+      }
+
+      .extra-slide:nth-of-type(4) .extra-img img{ /* 攤車背影 */
+        object-position:center 45%;
+      }
+
+      .extra-slide:nth-of-type(5) .extra-img img{ /* 紙袋 */
         object-position:center 60%;
       }
+    }
 
-      .extra-slide:nth-of-type(4) .extra-img img{ /* 整台攤車 */
-        object-position:center 48%;
-      }
-
-      .extra-slide:nth-of-type(5) .extra-img img{ /* 紙袋＋雙手＋光點 */
-        object-position:center 64%;
-      }
+    /* ================= AI Credit Style ================= */
+    footer .credit-ai {
+      font-size: 0.82rem;
+      opacity: 0.8;
+      margin-top: 0.25rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
     }
   </style>
 </head>
@@ -1094,10 +952,9 @@
     <header class="hero" aria-label="封面">
       <div class="hero-media">
         <picture>
-          <!-- 橫向裝置用橫式封面（Hero B） -->
           <source srcset="qqball_hero_2.png" media="(orientation: landscape)">
-          <!-- 其他狀況用直式封面 -->
-          <img src="qqball_hero_main.png" alt="夜色裡的地瓜球攤車，職人守在鍋邊翻動金黃地瓜球">
+          <!-- 首屏圖片必須立即加載，不用 loading="lazy" -->
+          <img src="qqball_hero_main.png" alt="夜色裡的地瓜球攤車，職人守在鍋邊翻動金黃地瓜球" fetchpriority="high">
         </picture>
         <div class="hero-smoke"></div>
       </div>
@@ -1106,7 +963,8 @@
           <span class="hero-tag-dot"></span>
           <span>QQBALL · HANDMADE</span>
         </div>
-        <div class="hero-title">ＱＱ球職人手作</div>
+        <!-- 優化：SEO 重要改動，Hero 標題改為 h1 -->
+        <h1 class="hero-title">ＱＱ球職人手作</h1>
         <div class="hero-sub">甜的剛好｜心的溫度</div>
         <div class="hero-line">夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。</div>
       </div>
@@ -1153,7 +1011,8 @@
       <div class="story-inner">
         <div class="story-img-col">
           <div class="story-img-wrap">
-            <img src="qqball_story_01.png" alt="夜色裡的油鍋裡一顆顆金黃QQ球翻騰的畫面">
+            <!-- 優化：加入 lazy loading -->
+            <img src="qqball_story_01.png" alt="夜色裡的油鍋裡一顆顆金黃QQ球翻騰的畫面" loading="lazy">
           </div>
         </div>
         <div class="story-text-col story-text">
@@ -1188,7 +1047,7 @@
       <div class="story-inner">
         <div class="story-img-col">
           <div class="story-img-wrap">
-            <img src="qqball_story_02.png" alt="職人雙手用力搓揉地瓜粉糰的畫面">
+            <img src="qqball_story_02.png" alt="職人雙手用力搓揉地瓜粉糰的畫面" loading="lazy">
           </div>
         </div>
         <div class="story-text-col story-text">
@@ -1222,7 +1081,7 @@
       <div class="story-inner">
         <div class="story-img-col">
           <div class="story-img-wrap">
-            <img src="qqball_story_03.png" alt="職人雙手握著濾網，細心翻動油鍋裡的地瓜球">
+            <img src="qqball_story_03.png" alt="職人雙手握著濾網，細心翻動油鍋裡的地瓜球" loading="lazy">
           </div>
         </div>
         <div class="story-text-col story-text">
@@ -1256,7 +1115,7 @@
       <div class="story-inner">
         <div class="story-img-col">
           <div class="story-img-wrap">
-            <img src="qqball_story_04.png" alt="夜色裡的小攤車，職人站在鍋邊的背影">
+            <img src="qqball_story_04.png" alt="夜色裡的小攤車，職人站在鍋邊的背影" loading="lazy">
           </div>
         </div>
         <div class="story-text-col story-text">
@@ -1292,7 +1151,7 @@
       <div class="story-inner">
         <div class="story-img-col">
           <div class="story-img-wrap">
-            <img src="qqball_story_05.png" alt="一袋裝滿金黃地瓜球的牛皮紙袋，被暖光照亮">
+            <img src="qqball_story_05.png" alt="一袋裝滿金黃地瓜球的牛皮紙袋，被暖光照亮" loading="lazy">
           </div>
         </div>
         <div class="story-text-col story-text">
@@ -1346,7 +1205,7 @@
               <!-- slide 1 -->
               <article class="extra-slide active">
                 <div class="extra-img">
-                  <img src="qqball_extra_01.png" alt="油鍋特寫，金黃地瓜球在油面上鼓起翻動">
+                  <img src="qqball_extra_01.png" alt="油鍋特寫，金黃地瓜球在油面上鼓起翻動" loading="lazy">
                 </div>
                 <div class="extra-text">
                   <div class="extra-label">❶ 油光的跳動｜亮起來的，是甜的開始</div>
@@ -1361,7 +1220,7 @@
               <!-- slide 2 -->
               <article class="extra-slide">
                 <div class="extra-img">
-                  <img src="qqball_extra_02.png" alt="職人的手揉著粉糰，粉糰在掌心逐漸變圓">
+                  <img src="qqball_extra_02.png" alt="職人的手揉著粉糰，粉糰在掌心逐漸變圓" loading="lazy">
                 </div>
                 <div class="extra-text">
                   <div class="extra-label">❷ 粉糰的成形｜手裡的溫度，比配方重要</div>
@@ -1376,7 +1235,7 @@
               <!-- slide 3 -->
               <article class="extra-slide">
                 <div class="extra-img">
-                  <img src="qqball_extra_03.png" alt="夜色背景下，油鍋與金黃地瓜球發出微光">
+                  <img src="qqball_extra_03.png" alt="夜色背景下，油鍋與金黃地瓜球發出微光" loading="lazy">
                 </div>
                 <div class="extra-text">
                   <div class="extra-label">❸ 手的語言｜藏在指尖的耐心與節奏</div>
@@ -1393,7 +1252,7 @@
               <!-- slide 4 -->
               <article class="extra-slide">
                 <div class="extra-img">
-                  <img src="qqball_extra_04.png" alt="夜裡的小攤車，燈光與蒸氣在風中交疊">
+                  <img src="qqball_extra_04.png" alt="夜裡的小攤車，燈光與蒸氣在風中交疊" loading="lazy">
                 </div>
                 <div class="extra-text">
                   <div class="extra-label">❹ 夜色裡的攤車｜風裡、光裡、他的身影</div>
@@ -1409,7 +1268,7 @@
               <!-- slide 5 -->
               <article class="extra-slide">
                 <div class="extra-img">
-                  <img src="qqball_extra_05.png" alt="雙手捧著一袋QQ球，紙袋被暖光照亮">
+                  <img src="qqball_extra_05.png" alt="雙手捧著一袋QQ球，紙袋被暖光照亮" loading="lazy">
                 </div>
                 <div class="extra-text">
                   <div class="extra-label">❺ 那一袋剛剛好的甜｜在心裡停留的瞬間</div>
@@ -1433,7 +1292,7 @@
               </button>
             </div>
 
-            <!-- footer：SLIDE / dots / HANDMADE 一行（之後由手機版 CSS 變成置中堆疊） -->
+            <!-- footer -->
             <div class="extra-footer">
               <div class="extra-counter">
                 <span>SLIDE</span>
@@ -1542,7 +1401,10 @@
 
   <footer>
     <div class="credit-main">
-      © 2025 <span>HSUAN~</span> × <span>ChatGPT（with GPT-5.1）</span>
+      © 2025 <span>HSUAN~</span>
+      <div class="credit-ai">
+        Collab. with Gemini 3 Pro & ChatGPT (w/ GPT-5.1)
+      </div>
     </div>
     <div class="slogan">
       <span class="slogan-icon" aria-hidden="true">
@@ -1573,7 +1435,9 @@
       function format(i){ return (i+1).toString().padStart(2,'0'); }
 
       function show(i){
+        // 修正邏輯，確保循環順暢
         index = (i + slides.length) % slides.length;
+        
         slides.forEach((s,idx)=>s.classList.toggle('active', idx===index));
         dots.forEach((d,idx)=>d.classList.toggle('active', idx===index));
         if(current) current.textContent = format(index);
@@ -1583,7 +1447,35 @@
       if(next) next.onclick = ()=>show(index+1);
       dots.forEach((dot,idx)=>dot.onclick=()=>show(idx));
 
+      // 預設顯示
       show(0);
+
+      // ==========================================
+      // 優化：新增觸控滑動支援 (Swipe Support)
+      // ==========================================
+      let touchStartX = 0;
+      let touchEndX = 0;
+      const minSwipeDistance = 50; // 最小滑動距離判定
+
+      slider.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, {passive: true});
+
+      slider.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, {passive: true});
+
+      function handleSwipe() {
+        if (touchEndX < touchStartX - minSwipeDistance) {
+          // 向左滑（下一張）
+          show(index + 1);
+        }
+        if (touchEndX > touchStartX + minSwipeDistance) {
+          // 向右滑（上一張）
+          show(index - 1);
+        }
+      }
     })();
   </script>
 
