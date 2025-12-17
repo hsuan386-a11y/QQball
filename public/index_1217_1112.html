@@ -1,0 +1,1621 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>ＱＱ球職人手作｜甜的剛好，心的溫度。</title>
+  <meta name="description" content="夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。">
+  <meta name="robots" content="index,follow">
+  <meta property="og:locale" content="zh_TW">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://q-qball.vercel.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ＱＱ球職人手作">
+  <meta property="og:url" content="https://q-qball.vercel.app/">
+  <meta property="og:title" content="ＱＱ球職人手作｜甜的剛好，心的溫度。">
+  <meta property="og:description" content="夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。">
+  <meta property="og:image" content="https://q-qball.vercel.app/qqball_extra_05.png">
+  <meta property="og:image:secure_url" content="https://q-qball.vercel.app/qqball_extra_05.png">
+  <meta property="og:image:alt" content="雙手捧著一袋熱騰騰QQ球的畫面">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ＱＱ球職人手作｜甜的剛好，心的溫度。">
+  <meta name="twitter:description" content="夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。">
+  <meta name="twitter:image" content="https://q-qball.vercel.app/qqball_extra_05.png">
+
+  <!-- Preload Hero -->
+  <link rel="preload" as="image" href="qqball_hero_main.png">
+  <link rel="preload" as="image" href="qqball_hero_2.png">
+
+  <style>
+    :root{
+      --bg:#F3E8D8;
+      --card:#FAF7F2;
+      --ink:#37281C;
+      --ink-soft:#4B3A2B;
+      --accent:#C6783A;
+      --accent-soft:#E3B17A;
+      --border-soft:#E0D2C3;
+      --container-max:960px;
+
+      --qq-image-filter: saturate(1.06) contrast(1.05) brightness(1.04);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+    img{max-width:100%;display:block;}
+
+    body{
+      font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+      background:radial-gradient(circle at top,#F9F0E4 0,#F3E8D8 45%,#E8D8C4 100%);
+      color:var(--ink);
+      line-height:2.05;
+      font-size:clamp(18px,2.4vw,20px);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    main{
+      width:min(92%,var(--container-max));
+      margin:0 auto 2.6rem;
+      padding-bottom:1.4rem;
+    }
+
+    p{
+      color:var(--ink-soft);
+      font-size:clamp(1.18rem,2.4vw,1.32rem);
+      line-height:2.05;
+      margin:.6rem 0;
+    }
+
+    p + p{margin-top:.8rem;}
+
+    .card{
+      background:var(--card);
+      border-radius:22px;
+      padding:2.1rem 2rem;
+      margin:0 auto 2.2rem;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.08),
+        0 0 0 1px rgba(255,255,255,.8);
+      border:1px solid rgba(224,210,195,.7);
+    }
+
+    @media (max-width:768px){
+      .card{
+        border-radius:18px;
+        padding:1.8rem 1.55rem;
+        margin-bottom:2rem;
+      }
+    }
+
+    .section-title{
+      font-size:clamp(1.5rem,2.4vw,1.8rem);
+      font-weight:800;
+      color:#5A3A1C;
+      margin-bottom:1.05rem;
+      letter-spacing:.08em;
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+    }
+
+    .section-title::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-.35rem;
+      width:70%;
+      max-width:140px;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(to right,rgba(198,120,58,.98),rgba(198,120,58,0));
+    }
+
+    .section-title-badge{
+      font-size:.76rem;
+      font-weight:700;
+      padding:.18rem .5rem;
+      border-radius:999px;
+      border:1px solid rgba(198,120,58,.35);
+      color:#8A5A32;
+      background:rgba(247,232,211,.7);
+      letter-spacing:.14em;
+    }
+    
+    /* ================= Step 9｜Extra 專用微調 ================= */
+
+/* —— 核心原則 —— 
+   1) 不縮字，只放大容器
+   2) iPad 解擠、手機更聚焦
+   3) Extra 標題層級 ≥ Story
+*/
+
+/* Extra 整體呼吸感 */
+.extra-section{
+  margin-top:3.2rem;
+  margin-bottom:3.6rem;
+}
+
+/* Extra 外層卡：iPad / 桌機放大 */
+@media (min-width:768px){
+  .extra-shell.card{
+    padding:2.6rem 2.8rem;
+  }
+}
+
+/* Extra Header（左側文字） */
+.extra-header{
+  max-width:42em;
+}
+
+.extra-header .section-title{
+  font-size:clamp(1.8rem,2.6vw,2.1rem); /* ≥ Story */
+  line-height:1.35;
+}
+
+.extra-header p{
+  font-size:clamp(1.2rem,2.4vw,1.36rem);
+  line-height:2.1;
+}
+
+/* Extra Slider Card：跟著放大 */
+@media (min-width:768px){
+  .extra-slider-card{
+    padding:2.2rem 2.2rem 2.4rem;
+  }
+}
+
+/* Slide 內圖文比例（圖 > 文） */
+@media (min-width:900px){
+  .extra-slide.active{
+    gap:2.4rem;
+  }
+  .extra-img{
+    flex:0 0 66%;
+  }
+}
+
+/* Extra 圖：給畫面更多呼吸 */
+.extra-img{
+  border-radius:18px;
+}
+
+/* Extra 文字層級 */
+.extra-label{
+  font-size:clamp(1.2rem,2.4vw,1.36rem);
+  margin-bottom:.6rem;
+}
+
+.extra-caption{
+  font-size:clamp(1.18rem,2.3vw,1.32rem);
+  line-height:2.05;
+}
+
+/* 操作區：不搶戲但清楚 */
+.extra-swipe-hint{
+  opacity:.65;
+  margin-top:.6rem;
+}
+
+/* iPad 直向：避免「窄＋擠」 */
+@media (min-width:768px) and (max-width:1024px) and (orientation:portrait){
+  .extra-shell{
+    gap:2.4rem;
+  }
+  .extra-header{
+    max-width:100%;
+  }
+  .extra-img{
+    max-height:520px;
+  }
+}
+
+/* 手機：更聚焦、更像特寫 */
+@media (max-width:480px){
+  .extra-shell.card{
+    padding:1.8rem 1.4rem;
+  }
+  .extra-img{
+    max-height:300px;
+  }
+  .extra-label{
+    font-size:1.12rem;
+  }
+  .extra-caption{
+    font-size:1.06rem;
+  }
+}
+
+/* ================= Step 10｜Share × Footer 收尾修正 ================= */
+
+/* 分享區不要像「最後一頁」 */
+.share-section{
+  margin-bottom:1.2rem; /* 原本太大，壓縮 */
+}
+
+/* 分享卡片底部呼吸收斂 */
+.share-section .card{
+  margin-bottom:0;
+}
+
+/* Footer 改成「延續層」，不是新章節 */
+footer{
+  margin-top:.4rem;              /* 與分享區貼近 */
+  padding-top:1.4rem;            /* 上方收斂 */
+  background:
+    linear-gradient(
+      to bottom,
+      #F0E2D0 0%,
+      #E6D6C3 60%
+    );
+}
+
+/* Footer 第一行（署名）不要太像新段落 */
+footer .credit-main{
+  margin-top:.2rem;
+  margin-bottom:.3rem;
+  opacity:.9;
+}
+
+/* Footer slogan 視覺降一點，變成餘溫 */
+footer .slogan{
+  margin-bottom:.6rem;
+  opacity:.85;
+}
+
+/* Footer links 當作補充資訊，而不是主內容 */
+footer .links{
+  margin-top:.4rem;
+  font-size:.95rem;
+  opacity:.85;
+}
+
+/* 手機：避免「滑到分享區就停」的錯覺 */
+@media (max-width:480px){
+  .share-section{
+    margin-bottom:.8rem;
+  }
+  footer{
+    padding-top:1.2rem;
+    padding-bottom:1.8rem;
+  }
+}
+
+/* ================= Step 11｜Footer 署名呈現（降權重，不改文字） ================= */
+
+/* 署名整體降一階，不像主內容 */
+footer .credit-main{
+  font-size:.92rem;
+  font-weight:500;
+  letter-spacing:.04em;
+  opacity:.78;
+}
+
+/* 作者名字仍可被看見，但不搶 */
+footer .credit-main span{
+  font-weight:600;
+}
+
+/* 若畫面較小（手機），再微降一點存在感 */
+@media (max-width:480px){
+  footer .credit-main{
+    font-size:.88rem;
+    opacity:.72;
+  }
+}
+
+/* ================= Step 12｜Extra 滑動提示文字（存在感優化） ================= */
+
+/* 滑動提示：從「一句字」變成「UI 提示條」 */
+.extra-swipe-hint{
+  display:inline-block;
+  margin:.7rem auto .2rem;
+  padding:.28rem .9rem;
+  border-radius:999px;
+  background:rgba(255,245,230,.75);
+  border:1px solid rgba(198,120,58,.35);
+  font-size:.78rem;
+  letter-spacing:.06em;
+  color:#6B4A30;
+  opacity:.92;
+  backdrop-filter:blur(4px);
+}
+
+/* 在深色圖片上也能被看見 */
+.extra-slider-card{
+  position:relative;
+}
+
+/* 手機：稍微放大一點點，讓第一次看到的人能理解 */
+@media (max-width:480px){
+  .extra-swipe-hint{
+    font-size:.82rem;
+    padding:.32rem 1rem;
+    margin-top:.6rem;
+  }
+}
+
+/* ================= Step 13｜Extra 頁碼主次關係（SLIDE 為主） ================= */
+
+/* SLIDE 01 / 05：主角 */
+.extra-counter{
+  font-size:.95rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  color:#5A3A1C;
+}
+
+/* 數字更明確 */
+.extra-counter-current{
+  font-size:1.05rem;
+  font-weight:800;
+}
+
+/* 點點頁碼：降權重，當操作輔助 */
+.extra-dots{
+  opacity:.55;
+  transform:scale(.92);
+}
+
+/* 當使用者互動時，點點才浮起來 */
+.extra-dots:hover{
+  opacity:.85;
+  transform:scale(1);
+}
+
+/* 個別 dot 不再太亮 */
+.extra-dot{
+  background:#D6C7B5;
+}
+
+/* active dot 保留清楚即可 */
+.extra-dot.active{
+  background:#C6783A;
+}
+
+/* 手機：SLIDE 再清楚一點，點點再退後一點 */
+@media (max-width:480px){
+  .extra-counter{
+    font-size:1rem;
+  }
+  .extra-dots{
+    opacity:.45;
+  }
+}
+
+/* ================= Step 14｜Extra「HANDMADE · DETAIL」章節簽名化 ================= */
+
+/* Extra footer 整體微調，讓最後一行自然落在正中央 */
+.extra-footer{
+  justify-content:center;
+  gap:1.2rem;
+  flex-wrap:wrap;
+}
+
+/* HANDMADE · DETAIL：置中＋收尾感 */
+.extra-meta-tag{
+  order:3;                 /* 放在最下面視覺層 */
+  margin-top:.35rem;
+  font-size:.82rem;
+  letter-spacing:.14em;
+  opacity:.75;
+  background:transparent;  /* 不像按鈕 */
+  border-color:rgba(198,120,58,.28);
+}
+
+/* 桌機 / 平板：再穩一點 */
+@media (min-width:768px){
+  .extra-meta-tag{
+    font-size:.8rem;
+    margin-top:.45rem;
+  }
+}
+
+/* 手機：避免擠在一起 */
+@media (max-width:480px){
+  .extra-meta-tag{
+    margin-top:.55rem;
+  }
+}
+
+/* ================= Step 15｜Extra（iPad 橫向）比例與呼吸修正 ================= */
+
+/* 僅限 iPad 橫向 */
+@media (min-width:1024px) and (max-width:1366px) and (orientation:landscape){
+
+  /* 外層白卡放大，避免內容被擠 */
+  .extra-shell.card{
+    padding:2.4rem 2.6rem;
+  }
+
+  /* 左文右圖比例重配：圖更大 */
+  .extra-shell{
+    grid-template-columns:minmax(0,1.5fr) minmax(0,3.8fr);
+    column-gap:2.4rem;
+  }
+
+  /* Header（左側文字）放鬆行距 */
+  .extra-header p{
+    line-height:2.1;
+  }
+
+  /* Slider 卡片微放大 */
+  .extra-slider-card{
+    padding:2rem 2.2rem 2.2rem;
+  }
+
+  /* 單張 slide 內：圖文拉開 */
+  .extra-slide.active{
+    gap:2.6rem;
+  }
+
+  /* 圖片區再放大一點 */
+  .extra-img{
+    flex:0 0 68%;
+    max-height:560px;
+  }
+
+  /* 文字區避免貼邊 */
+  .extra-text{
+    padding-right:.4rem;
+  }
+}
+
+/* ================= Step 16｜手機版 Hero 氛圍與聚焦微調 ================= */
+
+@media (max-width:480px){
+
+  /* Hero 圖：上暗下亮，視線往鍋集中 */
+  .hero-media::after{
+    background:
+      radial-gradient(circle at 50% 65%,
+        rgba(255,220,160,.38) 0%,
+        rgba(255,200,130,.22) 35%,
+        rgba(0,0,0,0) 70%),
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,.22) 0%,
+        rgba(0,0,0,.18) 35%,
+        rgba(0,0,0,.48) 100%
+      );
+  }
+
+  /* 煙霧再淡一點，避免糊 */
+  .hero-smoke{
+    opacity:.75;
+  }
+
+  /* 文字區：微微襯底，讓字「站得住」 */
+  .hero-text{
+    padding:.6rem .7rem .7rem;
+    background:linear-gradient(
+      to bottom,
+      rgba(0,0,0,.0),
+      rgba(0,0,0,.18)
+    );
+    border-radius:16px;
+  }
+
+  /* 副標與小標分層更清楚 */
+  .hero-sub{
+    opacity:.92;
+  }
+
+  .hero-line{
+    opacity:.9;
+  }
+}
+
+/* ================= Step 17｜手機版 Story 內文節奏與呼吸 ================= */
+
+@media (max-width:480px){
+
+  /* Story 文字本體：行距微穩 */
+  .story-text p{
+    line-height:2.0;
+    margin:.6rem 0;
+  }
+
+  /* 段落之間：拉出節奏層次 */
+  .story-text p + p{
+    margin-top:1.05rem;
+  }
+
+  /* 每一段故事的第一段：穩住開頭 */
+  .story-text p:first-of-type{
+    margin-top:.3rem;
+  }
+
+  /* 故事結尾段：自然收尾，不拖 */
+  .story-text p:last-of-type{
+    margin-bottom:.2rem;
+  }
+}
+
+/* ================= Step 18｜手機版 Extra 圖像特寫與對焦 ================= */
+
+@media (max-width:480px){
+
+  /* 圖片容器：略高一點，營造特寫感 */
+  .extra-img{
+    max-height:360px;   /* 原本較低，讓畫面更貼近 */
+  }
+
+  /* 圖片整體微放大 */
+  .extra-img img{
+    transform:scale(1.12);
+  }
+
+  /* 各張圖的手機對焦點（比桌機更靠近主體） */
+
+  /* 01｜蒸氣＋整鍋 */
+  .extra-slide:nth-of-type(1) .extra-img img{
+    object-position:center 48%;
+  }
+
+  /* 02｜手＋粉糰 */
+  .extra-slide:nth-of-type(2) .extra-img img{
+    object-position:center 68%;
+  }
+
+  /* 03｜油鍋特寫 */
+  .extra-slide:nth-of-type(3) .extra-img img{
+    object-position:center 58%;
+  }
+
+  /* 04｜整台攤車 */
+  .extra-slide:nth-of-type(4) .extra-img img{
+    object-position:center 52%;
+  }
+
+  /* 05｜紙袋＋雙手 */
+  .extra-slide:nth-of-type(5) .extra-img img{
+    object-position:center 64%;
+  }
+}
+
+/* ================= Step 19｜手機版 Extra 文字大小一致性 ================= */
+
+@media (max-width:480px){
+
+  /* Extra 標題：不再比 Story 小 */
+  .extra-header .section-title{
+    font-size:1.55rem;     /* 與 Story heading 接近 */
+    line-height:1.45;
+  }
+
+  /* Extra 主說明文字：對齊 Story 內文 */
+  .extra-header p{
+    font-size:1.18rem;
+    line-height:2.0;
+  }
+
+  /* Extra 單張標題（❶❷❸…） */
+  .extra-label{
+    font-size:1.18rem;
+    line-height:1.6;
+  }
+
+  /* Extra caption：與 Story 內文同一閱讀層級 */
+  .extra-caption{
+    font-size:1.16rem;
+    line-height:2.0;
+  }
+}
+
+/* ================= Step 20｜手機版 Extra 圖文密度優化 ================= */
+
+@media (max-width:480px){
+
+  /* 每一張 Extra slide：拉開整體節奏 */
+  .extra-slide.active{
+    gap:1.45rem;  /* 原本偏緊，這裡給呼吸 */
+  }
+
+  /* 圖與文字之間的距離 */
+  .extra-img{
+    margin-bottom:.25rem;
+  }
+
+  /* 標題（❶❷❸）與內文之間 */
+  .extra-label{
+    margin-bottom:.55rem;
+  }
+
+  /* 內文段落行距微放，避免視覺擠壓 */
+  .extra-caption{
+    line-height:2.05;
+  }
+
+  /* Extra slider card 內邊距微調，避免邊緣感 */
+  .extra-slider-card{
+    padding-top:1.7rem;
+    padding-bottom:1.9rem;
+  }
+}
+
+/* ================= Step 21｜手機版 Extra footer 對齊與層級 ================= */
+
+@media (max-width:480px){
+
+  .extra-footer{
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:.55rem;
+    margin-top:1rem;
+    text-align:center;
+  }
+
+  /* SLIDE + 點點：主資訊 */
+  .extra-counter{
+    order:1;
+    font-size:.92rem;
+    letter-spacing:.1em;
+  }
+
+  .extra-dots{
+    order:2;
+  }
+
+  /* HANDMADE · DETAIL：情緒標籤，退後一點 */
+  .extra-meta-tag{
+    order:3;
+    font-size:.78rem;
+    opacity:.85;
+    margin-top:.15rem;
+  }
+}
+
+/* ================= Step 22｜手機版 Extra 圖像特寫與對焦 ================= */
+
+@media (max-width:480px){
+
+  /* 圖像再貼近一點，製造「特寫感」 */
+  .extra-img img{
+    transform:scale(1.12);
+  }
+
+  /* 各張圖的手機專屬對焦點 */
+
+  /* ❶ 油鍋＋蒸氣 */
+  .extra-slide:nth-of-type(1) .extra-img img{
+    object-position:center 42%;
+  }
+
+  /* ❷ 手揉粉糰 */
+  .extra-slide:nth-of-type(2) .extra-img img{
+    object-position:center 68%;
+  }
+
+  /* ❸ 油鍋近拍 */
+  .extra-slide:nth-of-type(3) .extra-img img{
+    object-position:center 56%;
+  }
+
+  /* ❹ 攤車＋燈光 */
+  .extra-slide:nth-of-type(4) .extra-img img{
+    object-position:center 48%;
+  }
+
+  /* ❺ 紙袋＋雙手（甜的收尾） */
+  .extra-slide:nth-of-type(5) .extra-img img{
+    object-position:center 62%;
+  }
+}
+
+/* ================= Step 23｜手機版 Extra 滑動提示存在感 ================= */
+
+@media (max-width:480px){
+
+  .extra-swipe-hint{
+    margin-top:.65rem;
+    font-size:.82rem;
+    letter-spacing:.1em;
+    opacity:.95;
+    color:#6F4E32;
+    animation: swipeHintPulse 2.8s ease-in-out infinite;
+  }
+
+  @keyframes swipeHintPulse{
+    0%   { opacity:.75; }
+    50%  { opacity:1; }
+    100% { opacity:.75; }
+  }
+}
+
+/* ================= Step 24｜手機版 Hero 文字層級校正 ================= */
+
+@media (max-width:480px){
+
+  /* 主標：最清楚、最穩 */
+  .hero-title{
+    color:#FFF6EA;
+    text-shadow:0 2px 8px rgba(0,0,0,.55);
+    letter-spacing:.12em;
+  }
+
+  /* 副標：暖一點，退一階 */
+  .hero-sub{
+    color:#F6D9B8;
+    opacity:.92;
+    text-shadow:0 1px 6px rgba(0,0,0,.45);
+    margin-top:.15rem;
+  }
+
+  /* 敘述句：氣氛層，不搶 */
+  .hero-line{
+    color:#F3E6D6;
+    opacity:.85;
+    text-shadow:0 1px 4px rgba(0,0,0,.35);
+    margin-top:.35rem;
+  }
+
+  /* capsule 標籤：存在即可，不要搶標題 */
+  .hero-tag{
+    opacity:.9;
+  }
+}
+
+/* ================= Step 25｜iPad Hero 構圖校正 ================= */
+
+/* iPad 直向 */
+@media (min-width:768px) and (max-width:1024px) and (orientation:portrait){
+  .hero-media picture,
+  .hero-media img{
+    transform:translateY(2%) scale(1.05);
+    transform-origin:center;
+  }
+  .hero-text{
+    top:61%;
+  }
+}
+
+/* iPad 橫向 */
+@media (min-width:1024px) and (max-width:1366px) and (orientation:landscape){
+  .hero-media picture,
+  .hero-media img{
+    transform:translateY(5%) scale(1.07);
+    transform-origin:center;
+  }
+  .hero-text{
+    top:59%;
+  }
+}
+
+/* ================= Step 26｜iPad Story 區比例與留白校正 ================= */
+
+/* iPad 直向 */
+@media (min-width:768px) and (max-width:1024px) and (orientation:portrait){
+  .story-inner{
+    grid-template-columns:1fr;
+    padding:2.2rem 2rem 2.4rem;
+  }
+  .story-img-wrap{
+    max-width:560px;
+    margin:0 auto;
+  }
+}
+
+/* iPad 橫向 */
+@media (min-width:1024px) and (max-width:1366px) and (orientation:landscape){
+  .story-inner{
+    grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+    gap:2.6rem;
+    padding:2.3rem 2.4rem 2.6rem;
+  }
+  .story-img-wrap{
+    max-width:520px;
+  }
+}
+
+/* ================= Step 27｜iPad Extra 外卡 × 內卡層級重整 ================= */
+
+/* iPad 通用（直向＋橫向） */
+@media (min-width:768px) and (max-width:1366px){
+
+  /* 外卡：整體放大，變成畫冊封套 */
+  .extra-shell.card{
+    padding:2.8rem 2.8rem 3.2rem;
+  }
+
+  /* Extra 標題：正式升級層級 */
+  .extra-header .section-title{
+    font-size:clamp(1.7rem,2.2vw,2rem);
+  }
+
+  .extra-header p{
+    max-width:44em;
+  }
+
+  /* 內卡：跟著放大，但不搶外卡空氣 */
+  .extra-slider-card{
+    padding:2.2rem 2.4rem 2.4rem;
+  }
+
+  /* Slide 內：圖文比例重新定義 */
+  .extra-slide.active{
+    gap:2.4rem;
+  }
+
+  .extra-img{
+    max-height:520px;
+  }
+
+  .extra-text{
+    max-width:34em;
+  }
+}
+
+/* ================= Step 28｜Extra 操作元素去搶戲化 ================= */
+
+/* 箭頭：存在，但不主導畫面 */
+.extra-nav{
+  background:rgba(55,40,28,.88);
+  box-shadow:0 3px 8px rgba(0,0,0,.28);
+  opacity:.9;
+}
+
+.extra-nav:hover{
+  background:rgba(55,40,28,1);
+  opacity:1;
+}
+
+/* 箭頭尺寸在 iPad 稍微收斂 */
+@media (min-width:768px) and (max-width:1366px){
+  .extra-nav{
+    width:34px;
+    height:34px;
+  }
+  .extra-nav span{
+    font-size:1.25rem;
+  }
+}
+
+/* 滑動提示：退到「畫冊註腳」層級 */
+.extra-swipe-hint{
+  opacity:.55;
+  font-size:.72rem;
+  letter-spacing:.08em;
+  margin-top:.35rem;
+}
+
+/* 在 iPad / 桌機進一步弱化提示 */
+@media (min-width:768px){
+  .extra-swipe-hint{
+    opacity:.4;
+  }
+}
+
+/* ================= Step 29｜Extra footer 頁碼化 ================= */
+
+/* footer 整體改為「畫冊頁腳」感 */
+.extra-footer{
+  justify-content:center;
+  gap:1.1rem;
+  margin-top:.9rem;
+  font-size:.82rem;
+}
+
+/* SLIDE：主頁碼，視覺加權 */
+.extra-counter{
+  font-weight:700;
+  letter-spacing:.14em;
+  color:#5A3A1C;
+}
+
+.extra-counter-current{
+  font-size:1.05rem;
+}
+
+.extra-counter-total{
+  opacity:.55;
+}
+
+/* dots：退為輔助導覽 */
+.extra-dots{
+  order:2;
+}
+
+.extra-dot{
+  opacity:.5;
+}
+
+.extra-dot.active{
+  opacity:1;
+}
+
+/* HANDMADE：退為註腳標籤 */
+.extra-meta-tag{
+  order:3;
+  font-size:.72rem;
+  opacity:.6;
+  padding:.14rem .5rem;
+}
+
+/* 手機：footer 改為直向置中堆疊 */
+@media (max-width:480px){
+  .extra-footer{
+    flex-direction:column;
+    gap:.45rem;
+  }
+}
+
+/* ================= Step 30｜iPad 橫向 Extra 呼吸感重建 ================= */
+
+@media (min-width:1024px) and (max-width:1366px) and (orientation:landscape){
+
+  /* 外層比例重分配：左收、右放 */
+  .extra-shell{
+    grid-template-columns: minmax(0,1.3fr) minmax(0,3.7fr);
+    gap:2.4rem;
+  }
+
+  /* 左側文字區：限制寬度，避免撐滿 */
+  .extra-header{
+    max-width:420px;
+  }
+
+  .extra-header p{
+    max-width:38ch;
+  }
+
+  /* 右側 slider 卡片：更像畫冊 */
+  .extra-slider-card{
+    padding:2.1rem 2.2rem 2.3rem;
+  }
+
+  /* 圖本身放大，讓細節真的「靠近」 */
+  .extra-img{
+    max-height:560px;
+  }
+
+  /* slide 內圖文比例再偏向圖 */
+  .extra-slide.active{
+    gap:2.4rem;
+  }
+
+  .extra-img{
+    flex:0 0 68%;
+  }
+
+  /* footer 與圖的距離略拉開，避免壓迫 */
+  .extra-footer{
+    margin-top:1.2rem;
+  }
+}
+
+/* ================= Step 31｜Story 閱讀節奏微調 ================= */
+
+/* Story 段落基礎節奏 */
+.story-text p{
+  margin-top:.7rem;
+  margin-bottom:.7rem;
+}
+
+/* 連續段落的群組感（避免一整塊壓過來） */
+.story-text p + p{
+  margin-top:1.05rem;
+}
+
+/* 關鍵情緒句：段落中最後一句，自然停頓 */
+.story-text p:last-child{
+  margin-top:1.6rem;
+}
+
+/* Story 標題與內文之間，給一個「準備閱讀」的空白 */
+.story-heading{
+  margin-bottom:1.35rem;
+}
+
+/* iPad / 桌機：閱讀節奏再放慢一點 */
+@media (min-width:768px){
+  .story-text p + p{
+    margin-top:1.2rem;
+  }
+  .story-text p:last-child{
+    margin-top:1.8rem;
+  }
+}
+
+/* ================= Step 32｜Story 視線導引 ================= */
+
+/* 圖片：作為第一視線，但不搶字 */
+.story-img-wrap{
+  box-shadow:
+    0 14px 36px rgba(0,0,0,.32),
+    0 0 0 1px rgba(255,255,255,.08);
+  transition:filter .3s ease, transform .3s ease;
+}
+
+/* 文字區：略晚進場的閱讀感 */
+.story-text{
+  position:relative;
+}
+
+/* 標題：成為「視線錨點」 */
+.story-heading{
+  scroll-margin-top:120px;
+}
+
+/* 桌機 / 平板：左右排列時做視線導引 */
+@media (min-width:900px){
+
+  /* 圖略亮，字略沉，先看圖再讀字 */
+  .story-img-wrap img{
+    filter: var(--qq-image-filter) brightness(1.03);
+  }
+
+  .story-text{
+    padding-top:.3rem;
+  }
+
+  /* 偶數段落（左右對調）時，強化回到標題 */
+  .story-block:nth-of-type(even) .story-text{
+    padding-left:.2rem;
+  }
+}
+
+/* 手機：取消任何導引干擾，保持自然 */
+@media (max-width:768px){
+  .story-img-wrap{
+    box-shadow:
+      0 10px 26px rgba(0,0,0,.28);
+  }
+}
+
+/* ================= Step 33｜Story 段落群組 ================= */
+
+/* Story 內文：建立「閱讀群組感」 */
+.story-text p{
+  margin-top:.55rem;
+  margin-bottom:.55rem;
+}
+
+/* 同一段落群組內的連續句子：靠近一點 */
+.story-text p + p{
+  margin-top:.35rem;
+}
+
+/* 情緒轉折／收尾句：留出呼吸 */
+.story-text p:last-child{
+  margin-top:.9rem;
+}
+
+/* 標題與第一段之間：更明確的起跑距離 */
+.story-heading + p{
+  margin-top:1.2rem;
+}
+
+/* Story 區塊之間：維持原本節奏，不拉太開 */
+.story-block{
+  margin-bottom:2.6rem;
+}
+
+/* iPad 專屬微調：讓群組更明顯 */
+@media (min-width:768px) and (max-width:1024px){
+  .story-text p{
+    margin-top:.6rem;
+    margin-bottom:.6rem;
+  }
+  .story-text p + p{
+    margin-top:.38rem;
+  }
+  .story-text p:last-child{
+    margin-top:1rem;
+  }
+}
+
+/* ================= Step 34｜收斂（貼在 </style> 前） ================= */
+
+/* 1) 全站卡片陰影與邊框：更一致、更乾淨（避免每段像新章節） */
+:root{
+  --qq-shadow-soft: 0 10px 26px rgba(0,0,0,.08);
+  --qq-shadow-deep: 0 14px 40px rgba(0,0,0,.12);
+}
+
+.card{
+  box-shadow: var(--qq-shadow-soft), 0 0 0 1px rgba(255,255,255,.82);
+  border: 1px solid rgba(224,210,195,.62);
+}
+
+/* Story 內層：改為與 card 同一套“收斂陰影”，降低厚重感 */
+.story-inner{
+  box-shadow: var(--qq-shadow-deep), 0 0 0 1px rgba(255,255,255,.82);
+  border: 1px solid rgba(224,210,195,.62);
+}
+
+/* 2) Story 段落節奏：保留原文不改，但讓視覺停頓更自然 */
+.story-text p{
+  margin: .7rem 0;
+}
+.story-text p + p{
+  margin-top: .95rem;
+}
+
+/* 3) Extra：提示文字與控制列“退一步”，不搶戲 */
+.extra-swipe-hint{
+  opacity: .72;
+  letter-spacing: .06em;
+}
+
+/* dots/計數列視覺更安靜（仍然清楚） */
+.extra-footer{
+  opacity: .95;
+}
+
+/* 4) 分享區 → Footer：縮短距離，Footer 變“餘溫”不是新章節 */
+.share-section{
+  margin: 0 auto 1.2rem; /* 原本 2.2rem：收斂 */
+}
+footer{
+  padding-top: 1.35rem; /* 稍收 */
+  /* 讓 footer 背景更像從 share card 延續出來 */
+  background:
+    linear-gradient(to bottom,
+      rgba(250,247,242,.35) 0%,
+      rgba(230,214,195,1) 55%,
+      rgba(230,214,195,1) 100%);
+}
+
+/* 5) 小螢幕：再收一點段落空隙，避免“每段都很重” */
+@media (max-width:768px){
+  .story-block{
+    margin: 0 auto 2.4rem; /* 原本 2.9rem：收斂 */
+  }
+  .extra-section{
+    margin: 2.1rem auto 2.7rem; /* 原本 2.4/3.3：收斂 */
+  }
+  .share-section{
+    margin-bottom: 1rem;
+  }
+}
+
+/* 6) 大螢幕：避免卡片間距過大造成“章節斷裂” */
+@media (min-width:900px){
+  .card{
+    margin-bottom: 2rem; /* 原本 2.2rem：收斂 */
+  }
+  .story-block{
+    margin-bottom: 2.6rem; /* 原本 2.9rem：收斂 */
+  }
+}
+
+  </style>
+</head>
+
+  <!-- ================= HERO ================= -->
+  <div class="hero-shell">
+    <header class="hero" aria-label="封面">
+      <div class="hero-media">
+        <picture>
+          <!-- 橫向裝置用橫式封面 -->
+          <source srcset="qqball_hero_2.png" media="(orientation: landscape)">
+          <!-- 直向 / 其他狀況 -->
+          <img
+            src="qqball_hero_main.png"
+            alt="夜色裡的地瓜球攤車，職人守在鍋邊翻動金黃地瓜球"
+          >
+        </picture>
+        <div class="hero-smoke"></div>
+      </div>
+
+      <div class="hero-text">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          <span>QQBALL · HANDMADE</span>
+        </div>
+
+        <div class="hero-title">ＱＱ球職人手作</div>
+        <div class="hero-sub">甜的剛好｜心的溫度</div>
+        <div class="hero-line">
+          夜色裡的攤車，一鍋油、一雙手，一段關於手作溫度的故事。
+        </div>
+      </div>
+    </header>
+  </div>
+  
+      <!-- ================= 創作說明 ================= -->
+    <section class="card intro-block" aria-labelledby="about">
+      <h2 id="about" class="section-title">
+        創作說明
+        <span class="section-title-badge">PERSONAL WORK</span>
+      </h2>
+
+      <p>
+        本作品為個人設計與文案練習。「QQ球職人手作」為虛構主題，
+        以插畫、敘事與品牌氛圍，探索
+        <strong>職人精神 × 手作溫度 × 敘事美學</strong>
+        的可能性。
+      </p>
+      <p>
+        這不是商業作品，而是一份對「手作」的喜愛與致敬。
+        若這些畫面能在您心裡留下一絲柔軟，
+        那便是這份創作最想傳遞的溫度。
+      </p>
+    </section>
+
+    <!-- ================= 前言 ================= -->
+    <section class="card intro-block" aria-labelledby="intro">
+      <h2 id="intro" class="section-title">
+        前言
+        <span class="section-title-badge">STORY OPENING</span>
+      </h2>
+
+      <p>
+        傍晚的淡水街角，總飄著一股熟悉的香味——
+        金黃地瓜球剛起鍋的聲音，像日常裡最溫柔的問候。
+      </p>
+      <p>
+        故事從一鍋油開始，也從一雙願意把簡單日常做得更好的手開始。
+        請跟我一起靠近這台小攤車；看看一個職人，
+        是如何把每一件小事做到恰如其分。
+      </p>
+    </section>
+    
+        <!-- ================= 01 ================= -->
+    <article class="story-block" aria-labelledby="s01">
+      <div class="story-inner">
+        <div class="story-img-col">
+          <div class="story-img-wrap">
+            <img src="qqball_story_01.png" alt="夜色裡的油鍋裡一顆顆金黃QQ球翻騰的畫面">
+          </div>
+        </div>
+        <div class="story-text-col story-text">
+          <div class="story-eyebrow">01｜天氣轉涼的那天</div>
+          <h3 id="s01" class="story-heading">香氣出鍋，故事開場</h3>
+
+          <p>
+            空氣開始變得柔軟，淡水街頭的風也多了幾分涼意。  
+            就在轉角，一陣甜香穿過人群——  
+            那是剛起鍋的地瓜球，金黃、滾燙，像一顆顆小太陽，在油鍋裡輕輕跳動。
+          </p>
+          <p>
+            我忍不住停下腳步，看著油光翻滾、聽著細碎的滋滋聲。  
+            他站在鍋前，動作穩定而沉著，像在傾聽油溫的呼吸；  
+            每一次翻動，都凝著長年的累積與手感。
+          </p>
+          <p>
+            他總會把第一次起鍋的地瓜球留給自己，  
+            不是為了試味道，而是為了確認——  
+            「今天的手感，依舊沒變。」
+          </p>
+          <p>
+            那一瞬間，我忽然明白，  
+            這香氣，不只是味道，而是一種信念。
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================= 02 ================= -->
+    <article class="story-block" aria-labelledby="s02">
+      <div class="story-inner">
+        <div class="story-img-col">
+          <div class="story-img-wrap">
+            <img src="qqball_story_02.png" alt="職人雙手用力搓揉地瓜粉糰的畫面">
+          </div>
+        </div>
+        <div class="story-text-col story-text">
+          <div class="story-eyebrow">02｜不只是地瓜球</div>
+          <h3 id="s02" class="story-heading">靈魂，不是機器做得出來的</h3>
+
+          <p>
+            「我不是在炸地瓜球，我是在讓它變成幸福。」他笑著說。
+          </p>
+          <p>
+            每天清晨，他挑地瓜、削皮、切塊，  
+            用手去感受濕度、纖維與甜度。  
+            粉糰也堅持用手揉——  
+            「機器做得快，但味道會少了點靈魂。」他說。
+          </p>
+          <p>
+            每一次按壓，都在確認彈性；  
+            每一次下鍋，都聽著油泡從急促轉為溫和——  
+            那是地瓜球「準備好了」的訊號。
+          </p>
+          <p>
+            在他眼裡，這不是點心，  
+            而是一份每天必須做到「問心無愧」的用心。
+          </p>
+        </div>
+      </div>
+    </article>
+    
+        <!-- ================= 03 ================= -->
+    <article class="story-block" aria-labelledby="s03">
+      <div class="story-inner">
+        <div class="story-img-col">
+          <div class="story-img-wrap">
+            <img src="qqball_story_03.png" alt="職人雙手握著濾網，細心翻動油鍋裡的地瓜球">
+          </div>
+        </div>
+        <div class="story-text-col story-text">
+          <div class="story-eyebrow">03｜手的溫度</div>
+          <h3 id="s03" class="story-heading">藏在指尖的細節，是職人的語言</h3>
+
+          <p>
+            他的手粗糙卻穩定，  
+            像記住了時間、油溫、粉糰的性子。
+          </p>
+          <p>
+            翻動、提起、放下——  
+            每個動作都沉著、不急不躁，  
+            像在照顧某件重要的事情。
+          </p>
+          <p>
+            「手能感覺到機器感覺不到的細節。」他說。  
+            粉糰回彈的弧度、油泡變緩的瞬間、  
+            溫度剛剛好的那一刻——都藏在他的指尖裡。
+          </p>
+          <p>
+            那一刻，我忽然覺得世界慢了下來。  
+            那，是屬於職人的語言。
+          </p>
+        </div>
+      </div>
+    </article>
+    
+        <!-- ================= 04 ================= -->
+    <article class="story-block" aria-labelledby="s04">
+      <div class="story-inner">
+        <div class="story-img-col">
+          <div class="story-img-wrap">
+            <img src="qqball_story_04.png" alt="夜色裡的小攤車，職人站在鍋邊的背影">
+          </div>
+        </div>
+        <div class="story-text-col story-text">
+          <div class="story-eyebrow">04｜夜色裡的攤車</div>
+          <h3 id="s04" class="story-heading">那盞燈泡照亮的，不只是一條街</h3>
+
+          <p>
+            夜色漸深，街邊的風略帶寒意。  
+            鍋裡的油仍然穩穩地沸騰著，攤車前的燈泡發出微暖的光。
+          </p>
+          <p>
+            他守在鍋邊，一鍋又一鍋，  
+            像是在和這條街一起值班。
+          </p>
+          <p>
+            有人說他太固執，他只是笑笑地說：  
+            「這樣，才像是我啊。」
+          </p>
+          <p>
+            那一刻，我忽然懂了——  
+            職人的溫度，不在火候，而在用心。
+          </p>
+          <p>
+            油光晃動，照亮了他的側臉，  
+            也在某個不經意的瞬間，照進了我的心裡。
+          </p>
+        </div>
+      </div>
+    </article>
+    
+        <!-- ================= 05 ================= -->
+    <article class="story-block" aria-labelledby="s05">
+      <div class="story-inner">
+        <div class="story-img-col">
+          <div class="story-img-wrap">
+            <img src="qqball_story_05.png" alt="一袋裝滿金黃地瓜球的牛皮紙袋，被暖光照亮">
+          </div>
+        </div>
+        <div class="story-text-col story-text">
+          <div class="story-eyebrow">05｜那一顆記憶裡的香氣</div>
+          <h3 id="s05" class="story-heading">有些味道，是記憶在發光</h3>
+
+          <p>
+            熱騰騰的地瓜球被裝進牛皮紙袋，  
+            暖氣蒸騰，我接過的瞬間，手也跟著一起暖和了起來。
+          </p>
+          <p>
+            那香氣在夜裡飄散，  
+            那溫度在記憶裡停留。
+          </p>
+          <p>
+            吃著那袋地瓜球時，我忽然覺得——  
+            最美的日常，往往是被微小的用心堆起來的。
+          </p>
+          <p>
+            這份甜，不只是味道，  
+            而是一個人做事的方式。  
+            有些味道，不是被吃進去的，而是被記住的。
+          </p>
+        </div>
+      </div>
+    </article>
+    
+        <!-- ================= Extra（精品畫冊式） ================= -->
+    <section class="extra-section" aria-labelledby="extra">
+      <div class="extra-shell card">
+
+        <!-- ===== Extra Header（左側文字，放大容器） ===== -->
+        <div class="extra-header">
+          <h2 id="extra" class="section-title">
+            Extra｜那些藏在細節裡的溫度
+            <span class="section-title-badge">CLOSE–UP</span>
+          </h2>
+
+          <p>
+            有些溫度，只有「足夠靠近」時才能被感覺到。  
+            而那些看不見的用心——往往是手作最珍貴的地方。
+          </p>
+
+          <p>
+            或許，這些不起眼的小瞬間，就是職人最動人的語言。<br>
+            這裡放著幾張更貼近的視角，讓你更貼近這份手作裡最真實的溫度，與每一份甜背後那最細微的堅持。
+          </p>
+
+          <p class="extra-header-sub">SLIDE TO LOOK CLOSER</p>
+        </div>
+
+        <!-- ===== Extra Slider Card（右側圖文，容器放大） ===== -->
+        <div class="extra-slider-card">
+          <div class="extra-slider" data-extra-slider>
+
+            <div class="extra-slides">
+              <!-- ⚠️ 這裡的 5 個 slide 內容，完全沿用你原本的 -->
+              <!-- slide 1 -->
+              <article class="extra-slide active">
+                <div class="extra-img">
+                  <img src="qqball_extra_01.png" alt="油鍋特寫，金黃地瓜球在油面上鼓起翻動">
+                </div>
+                <div class="extra-text">
+                  <div class="extra-label">❶ 油光的跳動｜亮起來的，是甜的開始</div>
+                  <p class="extra-caption">
+                    蒸氣升起的亮度、油花跳起的瞬間——  
+                    那是地瓜球「開始呼吸」的時刻。<br>
+                    甜味從這裡醒來，也從這裡被照亮。
+                  </p>
+                </div>
+              </article>
+
+              <!-- slide 2 -->
+              <article class="extra-slide">
+                <div class="extra-img">
+                  <img src="qqball_extra_02.png" alt="職人的手揉著粉糰，粉糰在掌心逐漸變圓">
+                </div>
+                <div class="extra-text">
+                  <div class="extra-label">❷ 粉糰的成形｜手裡的溫度，比配方重要</div>
+                  <p class="extra-caption">
+                    粉糰在掌心裡變圓、變軟、變得有彈性。  
+                    那份只有手能感覺到的細節，<br>
+                    是機器永遠複製不來的溫柔。
+                  </p>
+                </div>
+              </article>
+
+              <!-- slide 3 -->
+              <article class="extra-slide">
+                <div class="extra-img">
+                  <img src="qqball_extra_03.png" alt="夜色背景下，油鍋與金黃地瓜球發出微光">
+                </div>
+                <div class="extra-text">
+                  <div class="extra-label">❸ 手的語言｜藏在指尖的耐心與節奏</div>
+                  <p class="extra-caption">
+                    指尖沿著油花的節奏移動，<br>
+                    力道時輕時重、角度恰到好處——<br>
+                    就像在與油溫對話。<br>
+                    地瓜球之所以能炸得澎圓、Q 彈，<br>
+                    是因為這雙手始終記得它們該有的樣子。
+                  </p>
+                </div>
+              </article>
+
+              <!-- slide 4 -->
+              <article class="extra-slide">
+                <div class="extra-img">
+                  <img src="qqball_extra_04.png" alt="夜裡的小攤車，燈光與蒸氣在風中交疊">
+                </div>
+                <div class="extra-text">
+                  <div class="extra-label">❹ 夜色裡的攤車｜風裡、光裡、他的身影</div>
+                  <p class="extra-caption">
+                    夜氣慢慢散開，燈泡的光暈在風裡搖晃。  
+                    鍋前的身影不曾動搖——<br>
+                    那是一種留給城市的安靜溫柔，  
+                    也是職人和自己對話的方式。
+                  </p>
+                </div>
+              </article>
+
+              <!-- slide 5 -->
+              <article class="extra-slide">
+                <div class="extra-img">
+                  <img src="qqball_extra_05.png" alt="雙手捧著一袋QQ球，紙袋被暖光照亮">
+                </div>
+                <div class="extra-text">
+                  <div class="extra-label">❺ 那一袋剛剛好的甜｜在心裡停留的瞬間</div>
+                  <p class="extra-caption">
+                    紙袋被暖光照亮的瞬間，甜味輕輕湧上來。  
+                    有些甜，不在嘴裡，而是在心裡被記住。<br>
+                    這袋剛剛好的溫度，  
+                    是一整天用心的結尾。
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <!-- arrows -->
+            <div class="extra-arrows">
+              <button class="extra-nav prev" type="button" aria-label="上一張" data-extra-prev>
+                <span>‹</span>
+              </button>
+              <button class="extra-nav next" type="button" aria-label="下一張" data-extra-next>
+                <span>›</span>
+              </button>
+            </div>
+
+            <!-- swipe hint（弱化，不搶戲） -->
+            <div class="extra-swipe-hint">
+              ← 左右滑動圖片，或點按下方箭頭 →
+            </div>
+
+            <!-- footer -->
+            <div class="extra-footer">
+              <div class="extra-counter">
+                <span>SLIDE</span>
+                <span class="extra-counter-current" data-extra-current>01</span>
+                <span class="extra-counter-total">/ 05</span>
+              </div>
+              <div class="extra-dots" data-extra-dots>
+                <button class="extra-dot active" type="button"></button>
+                <button class="extra-dot" type="button"></button>
+                <button class="extra-dot" type="button"></button>
+                <button class="extra-dot" type="button"></button>
+                <button class="extra-dot" type="button"></button>
+              </div>
+              <div class="extra-meta-tag">HANDMADE · DETAIL</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    
+        <!-- ================= 分享區 ================= -->
+    <section class="share-section card" aria-labelledby="share">
+      <h2 id="share" class="section-title">
+        分享這份溫度
+        <span class="section-title-badge">SHARE</span>
+      </h2>
+
+      <p>
+        如果這個故事讓你想起某個熟悉的味道、某段溫柔的日常，
+        歡迎把它分享出去。  
+        有些溫度，因為被傳遞，才會繼續存在。
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ================= Footer ================= -->
+  <footer>
+    <div class="credit-main">
+      © 2025 HSUAN~ × ChatGPT <span>(with GPT-5.2)</span>
+    </div>
+
+    <div class="slogan">
+      用手溫，做出心的味道。
+    </div>
+
+    <div class="links">
+      <div>Instagram｜@hsuan9456</div>
+      <div>Threads｜@hsuan9456</div>
+      <div>Facebook｜facebook.com/gu.rui.si</div>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+    
+    
+    
+    
+  
